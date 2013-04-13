@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		215C4BFA17107CC50095C74C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 215C4BF917107CC50095C74C /* AudioToolbox.framework */; };
+		215C4C0217107E360095C74C /* MUS147AQPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 215C4C0117107E360095C74C /* MUS147AQPlayer.m */; };
 		218E9DC8170FDEDA00306268 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218E9DC7170FDEDA00306268 /* UIKit.framework */; };
 		218E9DCA170FDEDA00306268 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218E9DC9170FDEDA00306268 /* Foundation.framework */; };
 		218E9DCC170FDEDA00306268 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218E9DCB170FDEDA00306268 /* CoreGraphics.framework */; };
@@ -21,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		215C4BF917107CC50095C74C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		215C4C0017107E360095C74C /* MUS147AQPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147AQPlayer.h; sourceTree = "<group>"; };
+		215C4C0117107E360095C74C /* MUS147AQPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147AQPlayer.m; sourceTree = "<group>"; };
 		218E9DC3170FDEDA00306268 /* Music147_2013.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Music147_2013.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		218E9DC7170FDEDA00306268 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		218E9DC9170FDEDA00306268 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -44,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				215C4BFA17107CC50095C74C /* AudioToolbox.framework in Frameworks */,
 				218E9DC8170FDEDA00306268 /* UIKit.framework in Frameworks */,
 				218E9DCA170FDEDA00306268 /* Foundation.framework in Frameworks */,
 				218E9DCC170FDEDA00306268 /* CoreGraphics.framework in Frameworks */,
@@ -56,6 +62,7 @@
 		218E9DB8170FDEDA00306268 = {
 			isa = PBXGroup;
 			children = (
+				215C4BF917107CC50095C74C /* AudioToolbox.framework */,
 				218E9DCD170FDEDA00306268 /* Music147_2013 */,
 				218E9DC6170FDEDA00306268 /* Frameworks */,
 				218E9DC4170FDEDA00306268 /* Products */,
@@ -83,6 +90,8 @@
 		218E9DCD170FDEDA00306268 /* Music147_2013 */ = {
 			isa = PBXGroup;
 			children = (
+				215C4C0017107E360095C74C /* MUS147AQPlayer.h */,
+				215C4C0117107E360095C74C /* MUS147AQPlayer.m */,
 				218E9DD6170FDEDA00306268 /* MUS147AppDelegate.h */,
 				218E9DD7170FDEDA00306268 /* MUS147AppDelegate.m */,
 				218E9DDF170FDEDA00306268 /* MUS147ViewController.h */,
@@ -177,6 +186,7 @@
 				218E9DD4170FDEDA00306268 /* main.m in Sources */,
 				218E9DD8170FDEDA00306268 /* MUS147AppDelegate.m in Sources */,
 				218E9DE1170FDEDA00306268 /* MUS147ViewController.m in Sources */,
+				215C4C0217107E360095C74C /* MUS147AQPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +303,7 @@
 				218E9DE9170FDEDA00306268 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

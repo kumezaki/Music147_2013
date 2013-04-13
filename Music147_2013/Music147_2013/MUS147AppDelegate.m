@@ -10,6 +10,9 @@
 
 #import "MUS147ViewController.h"
 
+#import "MUS147AQPlayer.h"
+extern MUS147AQPlayer *aqp;
+
 @implementation MUS147AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -19,6 +22,10 @@
     self.viewController = [[MUS147ViewController alloc] initWithNibName:@"MUS147ViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    aqp = [[MUS147AQPlayer alloc] init];
+    [aqp start];
+    
     return YES;
 }
 
