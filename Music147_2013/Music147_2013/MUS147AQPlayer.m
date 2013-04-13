@@ -14,27 +14,27 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 
 void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBufferRef inAQBuffer)
 {
-    /* compute the requested number of sample frames of audio */
+    // compute the requested number of sample frames of audio
 	const SInt32 numFrames = (inAQBuffer->mAudioDataBytesCapacity) / sizeof(SInt16);
     
-    /* create a temporary buffer of Float64 type samples */
+    // create a temporary buffer of Float64 type samples
 	Float64 buffer[numFrames];
     
-    /* set all sample values in buffer to zero (no sound) */
+    // set all sample values in buffer to zero (no sound)
     memset(buffer,0,sizeof(Float64)*numFrames);
 	
-    /* call AQPlayer fillAudioBuffer method to get a new block of samples */
+    // call AQPlayer fillAudioBuffer method to get a new block of samples
 	[aqp fillAudioBuffer:buffer:numFrames];
 	
-    /* fill the outgoing buffer as SInt16 type samples */
+    // fill the outgoing buffer as SInt16 type samples
 	for (SInt32 i = 0; i < numFrames; i++)
 		((SInt16 *)inAQBuffer->mAudioData)[i] = buffer[i] * (SInt16)INT16_MAX;
 	
-    /* set the mAudioDataByteSize and mPacketDescriptionCount AudioQueueBuffer fields (for some reason) */
+    // set the mAudioDataByteSize and mPacketDescriptionCount AudioQueueBuffer fields (for some reason)
 	inAQBuffer->mAudioDataByteSize = 512;
 	inAQBuffer->mPacketDescriptionCount = 0;
     
-	/* queue the updated AudioQueueBuffer */
+	// queue the updated AudioQueueBuffer
 	AudioQueueEnqueueBuffer(inAQ, inAQBuffer, 0, nil);
 }
 
@@ -109,7 +109,7 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 -(void)fillAudioBuffer:(Float64*)buffer:(UInt32)num_samples
 {
     // compute normalized angular frequency
-    Float64 deltaNormPhase = 440. / kSR;
+    Float64 deltaNormPhase = 440. / 22050.;
     
     // iterate through each element in the buffer
     for (UInt32 i = 0; i < num_samples; i++)
