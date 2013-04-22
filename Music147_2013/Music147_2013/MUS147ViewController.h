@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MUS147ViewController : UIViewController
+@interface MUS147ViewController : UIViewController {
+
+    // member variables here
+    IBOutlet UISlider* freqSlider;
+    IBOutlet UISlider* ampSlider;
+}
+
+// methods here
+-(IBAction)setFreq:(id)sender;
+-(IBAction)setAmp:(id)sender;
 
 @end
