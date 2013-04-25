@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2149451E1728A3E9000207B0 /* MUS147Voice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2149451D1728A3E9000207B0 /* MUS147Voice.m */; };
 		215C4BFA17107CC50095C74C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 215C4BF917107CC50095C74C /* AudioToolbox.framework */; };
 		215C4C0217107E360095C74C /* MUS147AQPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 215C4C0117107E360095C74C /* MUS147AQPlayer.m */; };
 		218E9DC8170FDEDA00306268 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218E9DC7170FDEDA00306268 /* UIKit.framework */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2149451C1728A3E9000207B0 /* MUS147Voice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Voice.h; sourceTree = "<group>"; };
+		2149451D1728A3E9000207B0 /* MUS147Voice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Voice.m; sourceTree = "<group>"; };
 		215C4BF917107CC50095C74C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		215C4C0017107E360095C74C /* MUS147AQPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147AQPlayer.h; sourceTree = "<group>"; };
 		215C4C0117107E360095C74C /* MUS147AQPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147AQPlayer.m; sourceTree = "<group>"; };
@@ -97,6 +100,8 @@
 				218E9DDF170FDEDA00306268 /* MUS147ViewController.h */,
 				218E9DE0170FDEDA00306268 /* MUS147ViewController.m */,
 				218E9DE2170FDEDA00306268 /* MUS147ViewController.xib */,
+				2149451C1728A3E9000207B0 /* MUS147Voice.h */,
+				2149451D1728A3E9000207B0 /* MUS147Voice.m */,
 				218E9DCE170FDEDA00306268 /* Supporting Files */,
 			);
 			path = Music147_2013;
@@ -187,6 +192,7 @@
 				218E9DD8170FDEDA00306268 /* MUS147AppDelegate.m in Sources */,
 				218E9DE1170FDEDA00306268 /* MUS147ViewController.m in Sources */,
 				215C4C0217107E360095C74C /* MUS147AQPlayer.m in Sources */,
+				2149451E1728A3E9000207B0 /* MUS147Voice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

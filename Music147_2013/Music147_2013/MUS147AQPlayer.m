@@ -40,9 +40,6 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 
 @implementation MUS147AQPlayer
 
-@synthesize freq;
-@synthesize amp;
-
 - (void)dealloc {
 
 	[self stop];
@@ -53,6 +50,9 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     self = [super init];
     
 	aqp = self;
+    
+    for (UInt8 i = 0; i < kNumVoices; i++)
+        voice[i] = [[MUS147Voice alloc] init];
 	
 	[self start];
     
@@ -75,7 +75,7 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 	if (result != noErr)
 		NSLog(@"AudioQueueNewOutput %ld\n",result);
 	
-    for (SInt32 i = 0; i < kNumberBuffers; i++)
+    for (SInt32 i = 0; i < kNumBuffers; i++)
 	{
 		result = AudioQueueAllocateBuffer(queue, 512, &buffers[i]);
 		if (result != noErr)
@@ -92,7 +92,7 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
         [self setup];
     
     // prime the queue with some data before starting
-    for (SInt32 i = 0; i < kNumberBuffers; ++i)
+    for (SInt32 i = 0; i < kNumBuffers; ++i)
         MUS147AQBufferCallback(nil, queue, buffers[i]);
 	
     result = AudioQueueStart(queue, nil);
@@ -109,20 +109,15 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 	return result;
 }
 
+-(MUS147Voice*)getVoice:(UInt8)pos
+{
+    return voice[pos];
+}
+
 -(void)fillAudioBuffer:(Float64*)buffer:(UInt32)num_samples
 {
-    // compute normalized angular frequency
-    Float64 deltaNormPhase = freq / 22050.;
-    
-    // iterate through each element in the buffer
-    for (UInt32 i = 0; i < num_samples; i++)
-    {
-        // assign value of sinusoid at phase position to buffer element
-		buffer[i] = amp * sin(normPhase * 2 * M_PI);
-        
-        // advance the phase position
-		normPhase += deltaNormPhase;
-    }
+    for (UInt8 i = 0; i < kNumVoices; i++)
+        [voice[i] fillAudioBuffer:buffer:num_samples];
 }
 
 @end

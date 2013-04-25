@@ -11,12 +11,16 @@
 @interface MUS147ViewController : UIViewController {
 
     // member variables here
-    IBOutlet UISlider* freqSlider;
-    IBOutlet UISlider* ampSlider;
+    IBOutlet UISlider* freq0Slider;
+    IBOutlet UISlider* amp0Slider;
+    IBOutlet UISlider* freq1Slider;
+    IBOutlet UISlider* amp1Slider;
 }
 
 // methods here
--(IBAction)setFreq:(id)sender;
--(IBAction)setAmp:(id)sender;
+-(IBAction)setFreq0:(id)sender;
+-(IBAction)setAmp0:(id)sender;
+-(IBAction)setFreq1:(id)sender;
+-(IBAction)setAmp1:(id)sender;
 
 @end
