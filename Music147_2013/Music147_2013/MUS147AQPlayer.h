@@ -9,31 +9,32 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <Foundation/Foundation.h>
 
-/* number of buffers used by system */
-#define kNumberBuffers	3
+#import "MUS147Voice.h"
 
-/* sample rate */
+// number of buffers used by system
+#define kNumBuffers     3
+
+// number of possible voices
+#define kNumVoices      2
+
+// sample rate
 #define kSR				22050.
 
 @interface MUS147AQPlayer : NSObject {
 
 	AudioQueueRef				queue;
-	AudioQueueBufferRef			buffers[kNumberBuffers];
+	AudioQueueBufferRef			buffers[kNumBuffers];
 	AudioStreamBasicDescription	dataFormat;
     
-    /* the follow member variable will soon be obsolete */
-    Float64 normPhase;
-    Float64 freq;
-    Float64 amp;
+    MUS147Voice* voice[kNumVoices];
 }
-
-@property (readwrite) Float64 freq;
-@property (readwrite) Float64 amp;
 
 -(void)setup;
 
 -(OSStatus)start;
 -(OSStatus)stop;
+
+-(MUS147Voice*)getVoice:(UInt8)pos;
 
 -(void)fillAudioBuffer:(Float64*)buffer:(UInt32)num_samples;
 
