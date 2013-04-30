@@ -10,7 +10,7 @@
 
 @implementation MUS147Voice_Synth
 
--(void)fillAudioBuffer:(Float64*)buffer:(UInt32)num_samples
+-(void)addToAudioBuffer:(Float64*)buffer:(UInt32)num_samples
 {
     // compute normalized angular frequency
     Float64 deltaNormPhase = freq / 22050.;
@@ -19,11 +19,13 @@
     for (UInt32 i = 0; i < num_samples; i++)
     {
         // assign value of sinusoid at phase position to buffer element
-		buffer[i] += amp * sin(normPhase * 2 * M_PI);
+		buffer[i] += amp * env.output * sin(normPhase * 2 * M_PI);
         
         // advance the phase position
 		normPhase += deltaNormPhase;
     }
+    
+    [env update:num_samples];
 }
 
 @end

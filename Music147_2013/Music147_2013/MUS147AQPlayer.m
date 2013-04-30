@@ -8,6 +8,8 @@
 
 #import "MUS147AQPlayer.h"
 
+#import "MUS147Effect.h"
+#import "MUS147Effect_Delay.h"
 #import "MUS147Voice_Sample.h"
 #import "MUS147Voice_Synth.h"
 
@@ -56,8 +58,18 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     
     for (UInt8 i = 0; i < kNumVoices; i++)
     {
-        voice[i] = [[MUS147Voice_Sample alloc] init];
+        switch (i) {
+            case 0:
+            case 1:
+                voice[i] = [[MUS147Voice_Sample alloc] init];
+                break;
+            case 2:
+                voice[i] = [[MUS147Voice_Synth alloc] init];
+                break;
+        }
     }
+    
+    effect = [[MUS147Effect_Delay alloc] init];
 	
 	[self start];
     
@@ -123,8 +135,10 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 {
     for (UInt8 i = 0; i < kNumVoices; i++)
     {
-        [voice[i] fillAudioBuffer:buffer:num_samples];
+        [voice[i] addToAudioBuffer:buffer:num_samples];
     }
+
+    [effect processAudioBuffer:buffer:num_samples];
 }
 
 @end

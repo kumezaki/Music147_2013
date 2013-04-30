@@ -15,10 +15,12 @@
 #define kNumBuffers     3
 
 // number of possible voices
-#define kNumVoices      2
+#define kNumVoices      3
 
 // sample rate
 #define kSR				22050.
+
+@class MUS147Effect;
 
 @interface MUS147AQPlayer : NSObject {
 
@@ -26,7 +28,8 @@
 	AudioQueueBufferRef			buffers[kNumBuffers];
 	AudioStreamBasicDescription	dataFormat;
     
-    MUS147Voice* voice[kNumVoices];
+    MUS147Voice*    voice[kNumVoices];
+    MUS147Effect*   effect;
 }
 
 -(void)setup;
