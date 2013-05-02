@@ -24,6 +24,7 @@
 		21BD98E1172B1DA000BFFBA6 /* MUS147Voice_Synth.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BD98E0172B1DA000BFFBA6 /* MUS147Voice_Synth.m */; };
 		21BD98E5172B1F2700BFFBA6 /* MUS147Voice_Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BD98E3172B1F2600BFFBA6 /* MUS147Voice_Sample.m */; };
 		21BD98E6172B1F2700BFFBA6 /* Music147.aif in Resources */ = {isa = PBXBuildFile; fileRef = 21BD98E4172B1F2600BFFBA6 /* Music147.aif */; };
+		E9123EE61731E3C5001E8507 /* MUS147View.m in Sources */ = {isa = PBXBuildFile; fileRef = E9123EE51731E3C5001E8507 /* MUS147View.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,8 @@
 		21BD98E2172B1F2600BFFBA6 /* MUS147Voice_Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Voice_Sample.h; sourceTree = "<group>"; };
 		21BD98E3172B1F2600BFFBA6 /* MUS147Voice_Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Voice_Sample.m; sourceTree = "<group>"; };
 		21BD98E4172B1F2600BFFBA6 /* Music147.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Music147.aif; sourceTree = "<group>"; };
+		E9123EE41731E3C5001E8507 /* MUS147View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147View.h; sourceTree = "<group>"; };
+		E9123EE51731E3C5001E8507 /* MUS147View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147View.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				215C4C0117107E360095C74C /* MUS147AQPlayer.m */,
 				218E9DD6170FDEDA00306268 /* MUS147AppDelegate.h */,
 				218E9DD7170FDEDA00306268 /* MUS147AppDelegate.m */,
+				E9123EE41731E3C5001E8507 /* MUS147View.h */,
+				E9123EE51731E3C5001E8507 /* MUS147View.m */,
 				218E9DDF170FDEDA00306268 /* MUS147ViewController.h */,
 				218E9DE0170FDEDA00306268 /* MUS147ViewController.m */,
 				218E9DE2170FDEDA00306268 /* MUS147ViewController.xib */,
@@ -209,6 +214,7 @@
 				21BD98DD172B0D6D00BFFBA6 /* MUS147Voice.m in Sources */,
 				21BD98E1172B1DA000BFFBA6 /* MUS147Voice_Synth.m in Sources */,
 				21BD98E5172B1F2700BFFBA6 /* MUS147Voice_Sample.m in Sources */,
+				E9123EE61731E3C5001E8507 /* MUS147View.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
