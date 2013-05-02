@@ -22,14 +22,27 @@ extern MUS147AQPlayer* aqp;
     return self;
 }
 
-/*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+    if (touch == nil) return; /* guard */
+    
     // Drawing code
+    UIColor *uciBlueColor = [UIColor colorWithRed:0./255. green:34./255. blue:68./255. alpha:1.];
+    UIColor *uciGoldColor = [UIColor colorWithRed:255./255. green:222./255. blue:108./255. alpha:1.];
+
+    CGPoint pt = [touch locationInView:self];
+
+    Float64 w = 30.;
+    Float64 h = w;
+
+    [uciGoldColor set];
+    UIRectFill(CGRectMake(pt.x-w/2, pt.y-h/2, w, h));
+
+    [uciBlueColor set];
+    UIRectFrame(CGRectMake(pt.x-w/2, pt.y-h/2, w, h));
 }
-*/
 
 -(void)doTouches:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -41,7 +54,10 @@ extern MUS147AQPlayer* aqp;
         
         [aqp getVoice:1].freq = x * 2000.;
         [aqp getVoice:1].amp = 1. - y;
+
+        touch = t;
     }
+    [self setNeedsDisplay];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
