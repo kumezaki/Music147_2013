@@ -14,6 +14,8 @@
 {
 	self = [super init];
     
+    speed = 1.0;
+    
     /* get a path to the sound file */
     /* note that the file name and file extension are set here */
 	CFURLRef mSoundFileURLRef = CFBundleCopyResourceURL(CFBundleGetMainBundle(),CFSTR("Music147"),CFSTR("aif"),NULL);
@@ -36,7 +38,7 @@
 		NSLog(@"AudioFileClose %ld",result);
 }
 
--(void)fillAudioBuffer:(Float64*)buffer:(UInt32)num_samples
+-(void)addToAudioBuffer:(Float64*)buffer:(UInt32)num_samples
 {
     /* set up arguments needed by AudioFileReadPackets */
     UInt32 numReadPackets = num_samples * speed;

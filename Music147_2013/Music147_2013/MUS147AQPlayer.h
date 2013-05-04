@@ -11,11 +11,16 @@
 
 #import "MUS147Voice.h"
 
+@class MUS147Effect;
+
 // number of buffers used by system
 #define kNumBuffers     3
 
 // number of possible voices
-#define kNumVoices      2
+#define kNumVoices      3
+
+// number of possible effects
+#define kNumEffects      2
 
 // sample rate
 #define kSR				22050.
@@ -27,6 +32,8 @@
 	AudioStreamBasicDescription	dataFormat;
     
     MUS147Voice* voice[kNumVoices];
+    
+    MUS147Effect* effect[kNumEffects];
 }
 
 -(void)setup;

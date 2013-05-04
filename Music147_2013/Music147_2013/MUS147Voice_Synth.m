@@ -8,12 +8,14 @@
 
 #import "MUS147Voice_Synth.h"
 
+#import "MUS147AQPlayer.h"
+
 @implementation MUS147Voice_Synth
 
--(void)fillAudioBuffer:(Float64*)buffer:(UInt32)num_samples
+-(void)addToAudioBuffer:(Float64*)buffer:(UInt32)num_samples
 {
     // compute normalized angular frequency
-    Float64 deltaNormPhase = freq / 22050.;
+    Float64 deltaNormPhase = freq / kSR;
     
     // iterate through each element in the buffer
     for (UInt32 i = 0; i < num_samples; i++)
