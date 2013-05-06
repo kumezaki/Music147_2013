@@ -38,14 +38,16 @@
 
     for (UInt32 i = 0; i < num_samples; i++)
     {
+        Float64 s = 0.;
+
         Float64 denominator = sin( phase_ );
         if ( fabs(denominator) <= 1e-12 ) {
-            buffer[i] = 1.0;
+            s = 1.0;
         } else {
-            buffer[i] =  sin( m_ * phase_ );
-            buffer[i] /= m_ * denominator;
+            s =  sin( m_ * phase_ );
+            s /= m_ * denominator;
         }
-        buffer[i] *= amp;
+        buffer[i] += amp * s;
         phase_ += rate_;
         if ( phase_ >= M_PI ) phase_ -= M_PI;
     }
@@ -71,7 +73,7 @@
             y = sin(n*x)*sin((1-n)*x)/s;
             y += mu * sin(n*x);
         }
-        buffer[i] = amp * y / n;
+        buffer[i] += amp * y / n;
 
         // advance the phase position
         normPhase += deltaNormPhase;

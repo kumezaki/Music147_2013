@@ -23,6 +23,9 @@
 		218E9DDE170FDEDA00306268 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 218E9DDD170FDEDA00306268 /* Default-568h@2x.png */; };
 		218E9DE1170FDEDA00306268 /* MUS147ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 218E9DE0170FDEDA00306268 /* MUS147ViewController.m */; };
 		218E9DE4170FDEDA00306268 /* MUS147ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 218E9DE2170FDEDA00306268 /* MUS147ViewController.xib */; };
+		21BA2B021738707100155EA4 /* MUS147Effect_Delay.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BA2AFD1738707100155EA4 /* MUS147Effect_Delay.m */; };
+		21BA2B031738707100155EA4 /* MUS147Effect_Limiter.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BA2AFF1738707100155EA4 /* MUS147Effect_Limiter.m */; };
+		21BA2B041738707100155EA4 /* MUS147Effect.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BA2B011738707100155EA4 /* MUS147Effect.m */; };
 		21BD98DD172B0D6D00BFFBA6 /* MUS147Voice.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BD98DC172B0D6D00BFFBA6 /* MUS147Voice.m */; };
 		21BD98E1172B1DA000BFFBA6 /* MUS147Voice_Synth.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BD98E0172B1DA000BFFBA6 /* MUS147Voice_Synth.m */; };
 		21BD98E5172B1F2700BFFBA6 /* MUS147Voice_Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BD98E3172B1F2600BFFBA6 /* MUS147Voice_Sample.m */; };
@@ -56,6 +59,12 @@
 		218E9DDF170FDEDA00306268 /* MUS147ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MUS147ViewController.h; sourceTree = "<group>"; };
 		218E9DE0170FDEDA00306268 /* MUS147ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MUS147ViewController.m; sourceTree = "<group>"; };
 		218E9DE3170FDEDA00306268 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MUS147ViewController.xib; sourceTree = "<group>"; };
+		21BA2AFC1738707100155EA4 /* MUS147Effect_Delay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Effect_Delay.h; sourceTree = "<group>"; };
+		21BA2AFD1738707100155EA4 /* MUS147Effect_Delay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Effect_Delay.m; sourceTree = "<group>"; };
+		21BA2AFE1738707100155EA4 /* MUS147Effect_Limiter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Effect_Limiter.h; sourceTree = "<group>"; };
+		21BA2AFF1738707100155EA4 /* MUS147Effect_Limiter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Effect_Limiter.m; sourceTree = "<group>"; };
+		21BA2B001738707100155EA4 /* MUS147Effect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Effect.h; sourceTree = "<group>"; };
+		21BA2B011738707100155EA4 /* MUS147Effect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Effect.m; sourceTree = "<group>"; };
 		21BD98DB172B0D6D00BFFBA6 /* MUS147Voice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Voice.h; sourceTree = "<group>"; };
 		21BD98DC172B0D6D00BFFBA6 /* MUS147Voice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Voice.m; sourceTree = "<group>"; };
 		21BD98DF172B1DA000BFFBA6 /* MUS147Voice_Synth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Voice_Synth.h; sourceTree = "<group>"; };
@@ -117,6 +126,12 @@
 				215C4C0117107E360095C74C /* MUS147AQPlayer.m */,
 				218E9DD6170FDEDA00306268 /* MUS147AppDelegate.h */,
 				218E9DD7170FDEDA00306268 /* MUS147AppDelegate.m */,
+				21BA2B001738707100155EA4 /* MUS147Effect.h */,
+				21BA2B011738707100155EA4 /* MUS147Effect.m */,
+				21BA2AFC1738707100155EA4 /* MUS147Effect_Delay.h */,
+				21BA2AFD1738707100155EA4 /* MUS147Effect_Delay.m */,
+				21BA2AFE1738707100155EA4 /* MUS147Effect_Limiter.h */,
+				21BA2AFF1738707100155EA4 /* MUS147Effect_Limiter.m */,
 				E9123EE41731E3C5001E8507 /* MUS147View.h */,
 				E9123EE51731E3C5001E8507 /* MUS147View.m */,
 				218E9DDF170FDEDA00306268 /* MUS147ViewController.h */,
@@ -233,6 +248,9 @@
 				214917C6173419A1002042D9 /* MUS147Voice_BLIT.m in Sources */,
 				2147EC7D1736B2C000532E13 /* MUS147Voice_BLITSaw.m in Sources */,
 				210C03201736C6800057CE47 /* MUS147Voice_BLITSquare.m in Sources */,
+				21BA2B021738707100155EA4 /* MUS147Effect_Delay.m in Sources */,
+				21BA2B031738707100155EA4 /* MUS147Effect_Limiter.m in Sources */,
+				21BA2B041738707100155EA4 /* MUS147Effect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

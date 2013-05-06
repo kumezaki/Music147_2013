@@ -41,6 +41,7 @@
 
     for (UInt32 i = 0; i < num_samples; i++)
     {
+        Float64 s = 0.;
         Float64 temp = lastBlitOutput_;
 
         Float64 denominator = sin( phase_ );
@@ -56,10 +57,10 @@
         
         lastBlitOutput_ += temp;
         
-        buffer[i] = lastBlitOutput_ - dcbState_ + 0.999 * buffer[i];
+        s = lastBlitOutput_ - dcbState_ + 0.999 * buffer[i];
         dcbState_ = lastBlitOutput_;
 
-        buffer[i] *= amp;
+        buffer[i] += amp * s;
         
         phase_ += rate_;
         if ( phase_ >= (2 * M_PI) ) phase_ -= (2 * M_PI);
