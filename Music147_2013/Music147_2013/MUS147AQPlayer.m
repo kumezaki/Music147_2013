@@ -10,6 +10,9 @@
 
 #import "MUS147Voice_Sample.h"
 #import "MUS147Voice_Synth.h"
+#import "MUS147Voice_BLIT.h"
+#import "MUS147Voice_BLITSaw.h"
+#import "MUS147Voice_BLITSquare.h"
 
 MUS147AQPlayer *aqp = nil;
 
@@ -56,7 +59,7 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     
     for (UInt8 i = 0; i < kNumVoices; i++)
     {
-        voice[i] = [[MUS147Voice_Synth alloc] init];
+        voice[i] = [[MUS147Voice_BLITSaw alloc] init];
     }
 	
 	[self start];
@@ -123,7 +126,7 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 {
     for (UInt8 i = 0; i < kNumVoices; i++)
     {
-        [voice[i] fillAudioBuffer:buffer:num_samples];
+        [voice[i] addToAudioBuffer:buffer:num_samples];
     }
 }
 

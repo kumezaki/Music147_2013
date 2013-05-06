@@ -44,7 +44,7 @@ extern MUS147AQPlayer* aqp;
     UIRectFrame(CGRectMake(pt.x-w/2, pt.y-h/2, w, h));
 }
 
--(void)doTouches:(NSSet *)touches withEvent:(UIEvent *)event
+-(void)doTouchesOn:(NSSet *)touches withEvent:(UIEvent *)event
 {
     for (UITouch* t in touches)
     {
@@ -60,25 +60,31 @@ extern MUS147AQPlayer* aqp;
     [self setNeedsDisplay];
 }
 
+-(void)doTouchesOff:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [aqp getVoice:1].amp = 0.;
+    touch = nil;
+    [self setNeedsDisplay];
+}
+    
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self doTouches:touches withEvent:event];
+    [self doTouchesOn:touches withEvent:event];
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self doTouches:touches withEvent:event];
+    [self doTouchesOn:touches withEvent:event];
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self doTouches:touches withEvent:event];
-    [aqp getVoice:1].amp = 0.;
+    [self doTouchesOff:touches withEvent:event];
 }
 
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self doTouches:touches withEvent:event];
+    [self doTouchesOff:touches withEvent:event];
 }
 
 @end

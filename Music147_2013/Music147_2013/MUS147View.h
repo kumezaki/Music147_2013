@@ -12,6 +12,7 @@
     UITouch* touch;
 }
 
--(void)doTouches:(NSSet *)touches withEvent:(UIEvent *)event;
+-(void)doTouchesOn:(NSSet *)touches withEvent:(UIEvent *)event;
+-(void)doTouchesOff:(NSSet *)touches withEvent:(UIEvent *)event;
 
 @end

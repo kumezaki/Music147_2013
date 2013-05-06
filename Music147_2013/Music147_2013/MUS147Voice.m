@@ -14,7 +14,7 @@
 @synthesize amp;
 @synthesize speed;
 
--(void)fillAudioBuffer:(Float64*)buffer:(UInt32)num_samples
+-(void)addToAudioBuffer:(Float64*)buffer:(UInt32)num_samples
 {
     // does nothing
 }
