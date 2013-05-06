@@ -2,7 +2,7 @@
 //  MUS147View.m
 //  Music147_2013
 //
-//  Created by Lab User on 5/1/13.
+//  Created by Kojiro Umezaki on 5/3/13.
 //  Copyright (c) 2013 Kojiro Umezaki. All rights reserved.
 //
 
