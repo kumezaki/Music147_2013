@@ -22,16 +22,29 @@ extern MUS147AQPlayer* aqp;
     return self;
 }
 
-/*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+    if (touch == nil) return; /* guard */
+    
     // Drawing code
+    UIColor *uciBlueColor = [UIColor colorWithRed:0./255. green:34./255. blue:68./255. alpha:1.];
+    UIColor *uciGoldColor = [UIColor colorWithRed:255./255. green:222./255. blue:108./255. alpha:1.];
+    
+    CGPoint pt = [touch locationInView:self];
+    
+    Float64 w = 30.;
+    Float64 h = w;
+    
+    [uciGoldColor set];
+    UIRectFill(CGRectMake(pt.x-w/2, pt.y-h/2, w, h));
+    
+    [uciBlueColor set];
+    UIRectFrame(CGRectMake(pt.x-w/2, pt.y-h/2, w, h));
 }
-*/
 
--(void)doTouches:(NSSet*)touches:(UIEvent*)event
+-(void)doTouchesOn:(NSSet *)touches withEvent:(UIEvent *)event
 {
     for (UITouch* t in touches)
     {
@@ -40,30 +53,38 @@ extern MUS147AQPlayer* aqp;
         Float64 y = pt.y/self.bounds.size.height;
         
         [aqp getVoice:2].freq = x * 2000.;
-        [aqp getVoice:2].amp = (1. - y);
+        [aqp getVoice:2].amp = 1. - y;
+
+        touch = t;
     }
+    [self setNeedsDisplay];
+}
+
+-(void)doTouchesOff:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [aqp getVoice:2].amp = 0.;
+    touch = nil;
+    [self setNeedsDisplay];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self doTouches:touches:event];
+    [self doTouchesOn:touches withEvent:event];
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self doTouches:touches:event];
+    [self doTouchesOn:touches withEvent:event];
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self doTouches:touches:event];
-    [aqp getVoice:2].amp = 0.;
+    [self doTouchesOff:touches withEvent:event];
 }
 
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self doTouches:touches:event];
-    [aqp getVoice:2].amp = 0.;
+    [self doTouchesOff:touches withEvent:event];
 }
 
 @end

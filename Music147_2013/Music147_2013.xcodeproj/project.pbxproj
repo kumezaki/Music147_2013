@@ -10,6 +10,8 @@
 		21297AE617343FC40089BAD8 /* MUS147View.m in Sources */ = {isa = PBXBuildFile; fileRef = 21297AE517343FC40089BAD8 /* MUS147View.m */; };
 		2149E6AD17357B6F00734894 /* MUS147Effect_Delay.m in Sources */ = {isa = PBXBuildFile; fileRef = 2149E6AC17357B6F00734894 /* MUS147Effect_Delay.m */; };
 		2149E6B117357BD500734894 /* MUS147Effect_Limiter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2149E6B017357BD500734894 /* MUS147Effect_Limiter.m */; };
+		2158C830173AF7F300F2263B /* MUS147Voice_BLIT.m in Sources */ = {isa = PBXBuildFile; fileRef = 2158C82D173AF7F300F2263B /* MUS147Voice_BLIT.m */; };
+		2158C831173AF7F300F2263B /* MUS147Voice_BLITSaw.m in Sources */ = {isa = PBXBuildFile; fileRef = 2158C82F173AF7F300F2263B /* MUS147Voice_BLITSaw.m */; };
 		215C4BFA17107CC50095C74C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 215C4BF917107CC50095C74C /* AudioToolbox.framework */; };
 		215C4C0217107E360095C74C /* MUS147AQPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 215C4C0117107E360095C74C /* MUS147AQPlayer.m */; };
 		218E9DC8170FDEDA00306268 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218E9DC7170FDEDA00306268 /* UIKit.framework */; };
@@ -37,6 +39,10 @@
 		2149E6AC17357B6F00734894 /* MUS147Effect_Delay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Effect_Delay.m; sourceTree = "<group>"; };
 		2149E6AF17357BD500734894 /* MUS147Effect_Limiter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Effect_Limiter.h; sourceTree = "<group>"; };
 		2149E6B017357BD500734894 /* MUS147Effect_Limiter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Effect_Limiter.m; sourceTree = "<group>"; };
+		2158C82C173AF7F300F2263B /* MUS147Voice_BLIT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Voice_BLIT.h; sourceTree = "<group>"; };
+		2158C82D173AF7F300F2263B /* MUS147Voice_BLIT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Voice_BLIT.m; sourceTree = "<group>"; };
+		2158C82E173AF7F300F2263B /* MUS147Voice_BLITSaw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Voice_BLITSaw.h; sourceTree = "<group>"; };
+		2158C82F173AF7F300F2263B /* MUS147Voice_BLITSaw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Voice_BLITSaw.m; sourceTree = "<group>"; };
 		215C4BF917107CC50095C74C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		215C4C0017107E360095C74C /* MUS147AQPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147AQPlayer.h; sourceTree = "<group>"; };
 		215C4C0117107E360095C74C /* MUS147AQPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147AQPlayer.m; sourceTree = "<group>"; };
@@ -130,6 +136,10 @@
 				218E9DE2170FDEDA00306268 /* MUS147ViewController.xib */,
 				21BD98DB172B0D6D00BFFBA6 /* MUS147Voice.h */,
 				21BD98DC172B0D6D00BFFBA6 /* MUS147Voice.m */,
+				2158C82C173AF7F300F2263B /* MUS147Voice_BLIT.h */,
+				2158C82D173AF7F300F2263B /* MUS147Voice_BLIT.m */,
+				2158C82E173AF7F300F2263B /* MUS147Voice_BLITSaw.h */,
+				2158C82F173AF7F300F2263B /* MUS147Voice_BLITSaw.m */,
 				21BD98E2172B1F2600BFFBA6 /* MUS147Voice_Sample.h */,
 				21BD98E3172B1F2600BFFBA6 /* MUS147Voice_Sample.m */,
 				21BD98DF172B1DA000BFFBA6 /* MUS147Voice_Synth.h */,
@@ -233,6 +243,8 @@
 				219D448917344C7000A6A28F /* MUS147Effect.m in Sources */,
 				2149E6AD17357B6F00734894 /* MUS147Effect_Delay.m in Sources */,
 				2149E6B117357BD500734894 /* MUS147Effect_Limiter.m in Sources */,
+				2158C830173AF7F300F2263B /* MUS147Voice_BLIT.m in Sources */,
+				2158C831173AF7F300F2263B /* MUS147Voice_BLITSaw.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

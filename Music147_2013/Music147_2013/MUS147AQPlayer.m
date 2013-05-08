@@ -12,6 +12,8 @@
 #import "MUS147Effect_Limiter.h"
 #import "MUS147Voice_Sample.h"
 #import "MUS147Voice_Synth.h"
+#import "MUS147Voice_BLIT.h"
+#import "MUS147Voice_BLITSaw.h"
 
 MUS147AQPlayer *aqp = nil;
 
@@ -65,7 +67,7 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
                 voice[i] = [[MUS147Voice_Sample alloc] init];
                 break;
             case 2:
-                voice[i] = [[MUS147Voice_Synth alloc] init];
+                voice[i] = [[MUS147Voice_BLITSaw alloc] init];
                 break;
             default:
                 break;

@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MUS147View : UIView
+@interface MUS147View : UIView {
+    UITouch* touch;
+}
 
--(void)doTouches:(NSSet*)touches:(UIEvent*)event;
+-(void)doTouchesOn:(NSSet *)touches withEvent:(UIEvent *)event;
+-(void)doTouchesOff:(NSSet *)touches withEvent:(UIEvent *)event;
 
 @end
