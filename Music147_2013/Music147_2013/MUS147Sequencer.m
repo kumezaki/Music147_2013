@@ -28,6 +28,37 @@
 {
     Float64 elapsed_beats = bpm / 60. * elapsed_seconds;
     scoreTime += elapsed_beats;
+    
+    for (UInt32 i = 0; i < 2; i++)
+    {
+        MUS147Event* event = [seq getEvent:i];
+
+        if (scoreTime < event.startTime)
+        {
+            // WAIT
+        }
+        else if (scoreTime >= event.startTime + event.duration)
+        {
+            // DONE
+        }
+        else
+        {
+            // PLAYING
+        }
+    }
+         
+}
+
+-(void)play{
+    
+}
+
+-(void)stop{
+    
+}
+
+-(void)rewind{
+    
 }
 
 @end

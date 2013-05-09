@@ -14,11 +14,16 @@
     MUS147Sequence* seq;
     Float64 scoreTime;
     Float64 bpm;
+    BOOL playing;
 }
 
 @property (readwrite) Float64 scoreTime;
 @property (readwrite) Float64 bpm;
 
 -(void)advanceScoreTime:(Float64)elapsed_seconds;
+
+-(void)play;
+-(void)stop;
+-(void)rewind;
 
 @end
