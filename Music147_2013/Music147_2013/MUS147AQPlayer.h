@@ -9,6 +9,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <Foundation/Foundation.h>
 
+#import "MUS147Sequencer.h"
 #import "MUS147Voice.h"
 
 @class MUS147Effect;
@@ -34,6 +35,8 @@
     MUS147Voice* voice[kNumVoices];
     
     MUS147Effect* effect[kNumEffects];
+    
+    MUS147Sequencer* sequencer;
 }
 
 -(void)setup;
@@ -42,6 +45,8 @@
 -(OSStatus)stop;
 
 -(MUS147Voice*)getVoice:(UInt8)pos;
+
+-(void)reportElapsedFrames:(UInt32)num_frames;
 
 -(void)fillAudioBuffer:(Float64*)buffer:(UInt32)num_samples;
 

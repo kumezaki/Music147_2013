@@ -43,6 +43,8 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     
 	// queue the updated AudioQueueBuffer
 	AudioQueueEnqueueBuffer(inAQ, inAQBuffer, 0, nil);
+    
+    [aqp reportElapsedFrames:numFrames];
 }
 
 @implementation MUS147AQPlayer
@@ -88,6 +90,8 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
                 break;
         }
     }
+    
+    sequencer = [[MUS147Sequencer alloc] init];
     
 	[self start];
     
@@ -147,6 +151,13 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 -(MUS147Voice*)getVoice:(UInt8)pos
 {
     return voice[pos];
+}
+
+-(void)reportElapsedFrames:(UInt32)num_frames
+{
+    [sequencer advanceScoreTime:num_frames/kSR];
+
+    NSLog(@"%f",num_frames/kSR);
 }
 
 -(void)fillAudioBuffer:(Float64*)buffer:(UInt32)num_samples
