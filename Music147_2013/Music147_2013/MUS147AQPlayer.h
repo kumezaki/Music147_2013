@@ -39,6 +39,8 @@
     MUS147Sequencer* sequencer;
 }
 
+@property (readonly) MUS147Sequencer* sequencer;
+
 -(void)setup;
 
 -(OSStatus)start;

@@ -10,6 +10,8 @@
 
 @implementation MUS147Sequence
 
+@synthesize numEvents;
+
 -(id)init
 {
     self = [super init];

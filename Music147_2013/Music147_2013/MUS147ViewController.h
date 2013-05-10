@@ -23,4 +23,8 @@
 -(IBAction)setFreq1:(id)sender;
 -(IBAction)setAmp1:(id)sender;
 
+-(IBAction)seqPlay:(id)sender;
+-(IBAction)seqStop:(id)sender;
+-(IBAction)seqRewind:(id)sender;
+
 @end

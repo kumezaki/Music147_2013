@@ -17,6 +17,8 @@
     UInt32 numEvents;
 }
 
+@property (readwrite) UInt32 numEvents;
+
 -(MUS147Event*)getEvent:(UInt32)pos;
 
 @end
