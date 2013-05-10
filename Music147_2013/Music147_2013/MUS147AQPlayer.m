@@ -157,7 +157,7 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 {
     [sequencer advanceScoreTime:num_frames/kSR];
 
-    NSLog(@"%f",num_frames/kSR);
+//    NSLog(@"%f",num_frames/kSR);
 }
 
 -(void)fillAudioBuffer:(Float64*)buffer:(UInt32)num_samples
