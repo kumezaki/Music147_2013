@@ -19,4 +19,14 @@
     // does nothing
 }
 
+-(void)doOn
+{
+    amp = 1.;
+}
+
+-(void)doOff
+{
+    amp = 0.;
+}
+
 @end

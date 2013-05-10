@@ -48,13 +48,17 @@ extern MUS147AQPlayer* aqp;
 {
     for (UITouch* t in touches)
     {
+#if 0
         CGPoint pt = [t locationInView:self];
         Float64 x = pt.x/self.bounds.size.width;
         Float64 y = pt.y/self.bounds.size.height;
         
         [aqp getVoice:2].freq = x * 2000.;
         [aqp getVoice:2].amp = 1. - y;
-
+#else
+        [aqp.sequencer rewind];
+        [aqp.sequencer play];
+#endif
         touch = t;
     }
     [self setNeedsDisplay];
@@ -62,7 +66,11 @@ extern MUS147AQPlayer* aqp;
 
 -(void)doTouchesOff:(NSSet *)touches withEvent:(UIEvent *)event
 {
+#if 0
     [aqp getVoice:2].amp = 0.;
+#else
+    [aqp.sequencer stop];
+#endif
     touch = nil;
     [self setNeedsDisplay];
 }
@@ -74,7 +82,9 @@ extern MUS147AQPlayer* aqp;
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+#if 0
     [self doTouchesOn:touches withEvent:event];
+#endif
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
