@@ -8,6 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MUS147Sequence : NSObject
+#import "MUS147Event.h"
+
+#define kMaxNumSeqEvents    100
+
+@interface MUS147Sequence : NSObject {
+
+    MUS147Event* events[kMaxNumSeqEvents];
+    
+    UInt32 numEvents;
+}
+
+@property (readwrite) UInt32 numEvents;
+
+-(MUS147Event*)getEvent:(UInt32)pos;
 
 @end

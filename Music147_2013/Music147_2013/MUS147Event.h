@@ -8,6 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MUS147Event : NSObject
+#import "MUS147Voice.h"
+
+@interface MUS147Event : NSObject {
+    Float64 startTime;
+    Float64 duration;
+    SInt16 noteNumber;
+    BOOL on;
+    MUS147Voice* voice;
+}
+
+@property (readwrite) Float64 startTime;
+@property (readwrite) Float64 duration;
+@property (readwrite) SInt16 noteNumber;
+@property (readwrite) BOOL on;
+@property (readwrite) MUS147Voice* voice;
+
+-(void)doOn;
+-(void)doOff;
 
 @end
