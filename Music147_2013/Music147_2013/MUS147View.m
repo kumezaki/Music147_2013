@@ -22,6 +22,11 @@ extern MUS147AQPlayer* aqp;
     return self;
 }
 
+-(void)awakeFromNib
+{
+    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+}
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
@@ -52,8 +57,8 @@ extern MUS147AQPlayer* aqp;
         Float64 x = pt.x/self.bounds.size.width;
         Float64 y = pt.y/self.bounds.size.height;
         
-        [aqp getVoice:2].freq = x * 2000.;
-        [aqp getVoice:2].amp = 1. - y;
+        [aqp getSynthVoice].freq = x * 2000.;
+        [aqp getSynthVoice].amp = 1. - y;
 
         touch = t;
     }
@@ -62,7 +67,7 @@ extern MUS147AQPlayer* aqp;
 
 -(void)doTouchesOff:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [aqp getVoice:2].amp = 0.;
+    [aqp getSynthVoice].amp = 0.;
     touch = nil;
     [self setNeedsDisplay];
 }
@@ -85,6 +90,11 @@ extern MUS147AQPlayer* aqp;
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self doTouchesOff:touches withEvent:event];
+}
+
+-(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
+{
+    NSLog(@"%f %f %f",acceleration.x,acceleration.y,acceleration.z);
 }
 
 @end

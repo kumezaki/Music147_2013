@@ -20,10 +20,10 @@ extern MUS147AQPlayer* aqp;
 
 -(void)doOn
 {
-    voice = [aqp getVoice:2];
+    voice = [aqp getSynthVoice];
     voice.freq = pow(2.,((Float64)noteNum-69)/12.)*440.;
     on = YES;
-    voice.amp = 1.0;
+    voice.amp = 0.25;
 }
 
 -(void)doOff

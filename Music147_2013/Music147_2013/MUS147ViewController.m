@@ -66,4 +66,10 @@ extern MUS147AQPlayer* aqp;
     [aqp.sequencer rewind];
 }
 
+-(IBAction)seqWave:(id)sender
+{
+    NSLog(@"%d",waveSegmentedControl.selectedSegmentIndex);
+    [aqp setSynthVoice:waveSegmentedControl.selectedSegmentIndex];
+}
+
 @end
