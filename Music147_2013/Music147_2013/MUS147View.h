@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MUS147View : UIView {
+@interface MUS147View : UIView <UIAccelerometerDelegate> {
     UITouch* touch;
 }
 
