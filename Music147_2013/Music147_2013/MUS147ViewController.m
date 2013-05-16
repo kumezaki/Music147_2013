@@ -51,4 +51,25 @@ extern MUS147AQPlayer* aqp;
     [aqp getVoice:1].amp = amp1Slider.value;
 }
 
+-(IBAction)seqPlay:(id)sender
+{
+    [aqp.sequencer play];
+}
+
+-(IBAction)seqStop:(id)sender
+{
+    [aqp.sequencer stop];
+}
+
+-(IBAction)seqRewind:(id)sender
+{
+    [aqp.sequencer rewind];
+}
+
+-(IBAction)seqWave:(id)sender
+{
+    NSLog(@"%d",waveSegmentedControl.selectedSegmentIndex);
+    [aqp setSynthVoice:waveSegmentedControl.selectedSegmentIndex];
+}
+
 @end

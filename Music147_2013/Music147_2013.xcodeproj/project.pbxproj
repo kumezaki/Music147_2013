@@ -100,7 +100,6 @@
 		218E9DB8170FDEDA00306268 = {
 			isa = PBXGroup;
 			children = (
-				215C4BF917107CC50095C74C /* AudioToolbox.framework */,
 				218E9DCD170FDEDA00306268 /* Music147_2013 */,
 				218E9DC6170FDEDA00306268 /* Frameworks */,
 				218E9DC4170FDEDA00306268 /* Products */,
@@ -118,6 +117,7 @@
 		218E9DC6170FDEDA00306268 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				215C4BF917107CC50095C74C /* AudioToolbox.framework */,
 				218E9DC7170FDEDA00306268 /* UIKit.framework */,
 				218E9DC9170FDEDA00306268 /* Foundation.framework */,
 				218E9DCB170FDEDA00306268 /* CoreGraphics.framework */,

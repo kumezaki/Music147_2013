@@ -15,6 +15,7 @@
     IBOutlet UISlider* amp0Slider;
     IBOutlet UISlider* freq1Slider;
     IBOutlet UISlider* amp1Slider;
+    IBOutlet UISegmentedControl* waveSegmentedControl;
 }
 
 // methods here
@@ -22,5 +23,11 @@
 -(IBAction)setAmp0:(id)sender;
 -(IBAction)setFreq1:(id)sender;
 -(IBAction)setAmp1:(id)sender;
+
+-(IBAction)seqPlay:(id)sender;
+-(IBAction)seqStop:(id)sender;
+-(IBAction)seqRewind:(id)sender;
+
+-(IBAction)seqWave:(id)sender;
 
 @end

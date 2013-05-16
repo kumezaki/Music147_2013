@@ -18,7 +18,7 @@
 #define kNumBuffers     3
 
 // number of possible voices
-#define kNumVoices      3
+#define kNumVoices      4
 
 // number of possible effects
 #define kNumEffects      2
@@ -32,6 +32,8 @@
 	AudioQueueBufferRef			buffers[kNumBuffers];
 	AudioStreamBasicDescription	dataFormat;
     
+    UInt8 synthVoice;
+    
     MUS147Voice* voice[kNumVoices];
     
     MUS147Effect* effect[kNumEffects];
@@ -39,12 +41,17 @@
     MUS147Sequencer* sequencer;
 }
 
+@property (readonly) MUS147Sequencer* sequencer;
+
 -(void)setup;
 
 -(OSStatus)start;
 -(OSStatus)stop;
 
 -(MUS147Voice*)getVoice:(UInt8)pos;
+
+-(MUS147Voice*)getSynthVoice;
+-(void)setSynthVoice:(UInt8)pos;
 
 -(void)reportElapsedFrames:(UInt32)num_frames;
 

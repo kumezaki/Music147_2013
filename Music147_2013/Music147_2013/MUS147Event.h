@@ -21,6 +21,7 @@
 @property (readwrite) Float64 startTime;
 @property (readwrite) Float64 duration;
 @property (readwrite) SInt16 noteNum;
+@property (readwrite) BOOL on;
 
 -(void)doOn;
 -(void)doOff;

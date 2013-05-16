@@ -10,6 +10,8 @@
 
 @implementation MUS147Sequence
 
+@synthesize numEvents;
+
 -(id)init
 {
     self = [super init];
@@ -24,7 +26,17 @@
     events[1].duration = 0.5;
     events[1].noteNum = 65;
    
-    numEvents = 2;
+    events[2] = [[MUS147Event alloc] init];
+    events[2].startTime = 2.25;
+    events[2].duration = 0.25;
+    events[2].noteNum = 67;
+    
+    events[3] = [[MUS147Event alloc] init];
+    events[3].startTime = 3.75;
+    events[3].duration = 0.75;
+    events[3].noteNum = 62;
+    
+    numEvents = 4;
     
     return self;
 }

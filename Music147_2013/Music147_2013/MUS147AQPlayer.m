@@ -49,6 +49,8 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 
 @implementation MUS147AQPlayer
 
+@synthesize sequencer;
+
 - (void)dealloc {
 
 	[self stop];
@@ -69,6 +71,9 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
                 voice[i] = [[MUS147Voice_Sample alloc] init];
                 break;
             case 2:
+                voice[i] = [[MUS147Voice_BLIT alloc] init];
+                break;
+            case 3:
                 voice[i] = [[MUS147Voice_BLITSaw alloc] init];
                 break;
             default:
@@ -153,6 +158,16 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     return voice[pos];
 }
 
+-(MUS147Voice*)getSynthVoice
+{
+    return voice[2+synthVoice];
+}
+
+-(void)setSynthVoice:(UInt8)pos
+{
+    synthVoice = pos;
+}
+
 -(void)reportElapsedFrames:(UInt32)num_frames
 {
     [sequencer advanceScoreTime:num_frames/kSR];
@@ -164,7 +179,20 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 {
     for (UInt8 i = 0; i < kNumVoices; i++)
     {
-        [voice[i] addToAudioBuffer:buffer:num_samples];
+        switch (i)
+        {
+            case 2:
+                if (synthVoice == 0)
+                    [voice[i] addToAudioBuffer:buffer:num_samples];
+                break;
+            case 3:
+                if (synthVoice == 1)
+                    [voice[i] addToAudioBuffer:buffer:num_samples];
+                break;
+            default:
+                [voice[i] addToAudioBuffer:buffer:num_samples];
+                break;
+        }
     }
     
     for (UInt8 i = 0; i < kNumEffects; i++)
