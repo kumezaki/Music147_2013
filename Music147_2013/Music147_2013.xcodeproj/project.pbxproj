@@ -30,6 +30,7 @@
 		21BD98E1172B1DA000BFFBA6 /* MUS147Voice_Synth.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BD98E0172B1DA000BFFBA6 /* MUS147Voice_Synth.m */; };
 		21BD98E5172B1F2700BFFBA6 /* MUS147Voice_Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BD98E3172B1F2600BFFBA6 /* MUS147Voice_Sample.m */; };
 		21BD98E6172B1F2700BFFBA6 /* Music147.aif in Resources */ = {isa = PBXBuildFile; fileRef = 21BD98E4172B1F2600BFFBA6 /* Music147.aif */; };
+		21C078F91746AF8800FBB7BA /* MUS147Event_Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C078F81746AF8800FBB7BA /* MUS147Event_Touch.m */; };
 		E9B92E35173B22B10014404F /* MUS147Event.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B92E30173B22B10014404F /* MUS147Event.m */; };
 		E9B92E36173B22B10014404F /* MUS147Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B92E32173B22B10014404F /* MUS147Sequence.m */; };
 		E9B92E37173B22B10014404F /* MUS147Sequencer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B92E34173B22B10014404F /* MUS147Sequencer.m */; };
@@ -74,6 +75,8 @@
 		21BD98E2172B1F2600BFFBA6 /* MUS147Voice_Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Voice_Sample.h; sourceTree = "<group>"; };
 		21BD98E3172B1F2600BFFBA6 /* MUS147Voice_Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Voice_Sample.m; sourceTree = "<group>"; };
 		21BD98E4172B1F2600BFFBA6 /* Music147.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Music147.aif; sourceTree = "<group>"; };
+		21C078F71746AF8800FBB7BA /* MUS147Event_Touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Event_Touch.h; sourceTree = "<group>"; };
+		21C078F81746AF8800FBB7BA /* MUS147Event_Touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Event_Touch.m; sourceTree = "<group>"; };
 		E9B92E2F173B22B10014404F /* MUS147Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Event.h; sourceTree = "<group>"; };
 		E9B92E30173B22B10014404F /* MUS147Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Event.m; sourceTree = "<group>"; };
 		E9B92E31173B22B10014404F /* MUS147Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Sequence.h; sourceTree = "<group>"; };
@@ -140,6 +143,8 @@
 				2149E6B017357BD500734894 /* MUS147Effect_Limiter.m */,
 				E9B92E2F173B22B10014404F /* MUS147Event.h */,
 				E9B92E30173B22B10014404F /* MUS147Event.m */,
+				21C078F71746AF8800FBB7BA /* MUS147Event_Touch.h */,
+				21C078F81746AF8800FBB7BA /* MUS147Event_Touch.m */,
 				E9B92E31173B22B10014404F /* MUS147Sequence.h */,
 				E9B92E32173B22B10014404F /* MUS147Sequence.m */,
 				E9B92E33173B22B10014404F /* MUS147Sequencer.h */,
@@ -263,6 +268,7 @@
 				E9B92E35173B22B10014404F /* MUS147Event.m in Sources */,
 				E9B92E36173B22B10014404F /* MUS147Sequence.m in Sources */,
 				E9B92E37173B22B10014404F /* MUS147Sequencer.m in Sources */,
+				21C078F91746AF8800FBB7BA /* MUS147Event_Touch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

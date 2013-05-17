@@ -59,6 +59,10 @@ extern MUS147AQPlayer* aqp;
         
         [aqp getSynthVoice].freq = x * 2000.;
         [aqp getSynthVoice].amp = 1. - y;
+        
+        if (aqp.sequencer)
+        {
+        }
 
         touch = t;
     }
