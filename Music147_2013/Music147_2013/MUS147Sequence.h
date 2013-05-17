@@ -10,7 +10,7 @@
 
 #import "MUS147Event.h"
 
-#define kMaxNumSeqEvents 100
+#define kMaxNumSeqEvents 1000
 
 @interface MUS147Sequence : NSObject {
     MUS147Event* events[kMaxNumSeqEvents];
