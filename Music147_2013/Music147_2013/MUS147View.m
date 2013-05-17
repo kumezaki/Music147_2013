@@ -73,7 +73,7 @@ extern MUS147AQPlayer* aqp;
     [aqp getSynthVoice].amp = 0.;
 
     if (aqp.sequencer.recording)
-        [aqp.sequencer addTouchEvent:x :y :NO];
+        [aqp.sequencer addTouchEvent:0. :0. :NO];
 
     touch = nil;
 

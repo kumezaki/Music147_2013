@@ -88,4 +88,9 @@
     recording = YES;
 }
 
+-(void)addTouchEvent:(Float64)x :(Float64)y :(BOOL)on
+{
+    
+}
+
 @end
