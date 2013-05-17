@@ -21,6 +21,7 @@
     scoreTime = 0.;
     bpm = 60.;
     playing = NO;
+    recording = NO;
     
     return self;
 }

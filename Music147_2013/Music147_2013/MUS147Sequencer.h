@@ -15,6 +15,7 @@
     Float64 scoreTime;
     Float64 bpm;
     BOOL playing;
+    BOOL recording;
 }
 
 @property (readwrite) Float64 scoreTime;
