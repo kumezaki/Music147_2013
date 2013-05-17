@@ -60,9 +60,8 @@ extern MUS147AQPlayer* aqp;
         [aqp getSynthVoice].freq = x * 2000.;
         [aqp getSynthVoice].amp = 1. - y;
         
-        if (aqp.sequencer)
-        {
-        }
+        if (aqp.sequencer.recording)
+            [aqp.sequencer addTouchEvent:x :y :YES];
 
         touch = t;
     }
@@ -72,7 +71,12 @@ extern MUS147AQPlayer* aqp;
 -(void)doTouchesOff:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [aqp getSynthVoice].amp = 0.;
+
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addTouchEvent:x :y :NO];
+
     touch = nil;
+
     [self setNeedsDisplay];
 }
     
