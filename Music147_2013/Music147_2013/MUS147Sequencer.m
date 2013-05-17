@@ -69,6 +69,7 @@
 -(void)stop
 {
     playing = NO;
+    recording = NO;
 
     for (UInt32 i = 0; i < seq.numEvents; i++)
     {
@@ -80,6 +81,11 @@
 -(void)rewind
 {
     scoreTime = 0.;
+}
+
+-(void)record
+{
+    recording = YES;
 }
 
 @end

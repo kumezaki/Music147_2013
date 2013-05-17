@@ -68,7 +68,7 @@ extern MUS147AQPlayer* aqp;
 
 -(IBAction)seqRec:(id)sender
 {
-    NSLog(@"recording");
+    [aqp.sequencer record];
 }
 
 -(IBAction)seqWave:(id)sender
