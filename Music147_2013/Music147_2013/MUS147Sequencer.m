@@ -8,6 +8,8 @@
 
 #import "MUS147Sequencer.h"
 
+#import "MUS147Event_Touch.h"
+
 @implementation MUS147Sequencer
 
 @synthesize scoreTime;
@@ -30,7 +32,7 @@
 
 -(void)advanceScoreTime:(Float64)elapsed_seconds
 {
-    if (!playing) return;
+    if (!playing && !recording) return;
     
     Float64 elapsed_beats = bpm / 60. * elapsed_seconds;
     scoreTime += elapsed_beats;
@@ -90,7 +92,14 @@
 
 -(void)addTouchEvent:(Float64)x :(Float64)y :(BOOL)on
 {
+    if (!recording) return;
     
+    MUS147Event_Touch* e = [[MUS147Event_Touch alloc] init];
+    e.startTime = scoreTime;
+    e.duration; // need to assign this
+    e.x = x;
+    e.y = y;
+    e.on = on ? kMUS147Event_Touch_ON : kMUS147Event_Touch_OFF;
 }
 
 @end

@@ -10,4 +10,8 @@
 
 @implementation MUS147Event_Touch
 
+@synthesize x;
+@synthesize y;
+@synthesize type;
+
 @end
