@@ -10,7 +10,7 @@
 
 @implementation MUS147Effect
 
--(void)processAudioBuffer:(Float64*)buffer:(UInt32)num_samples
+-(void)processAudioBuffer:(Float64*)buffer :(UInt32)num_samples
 {
 }
 

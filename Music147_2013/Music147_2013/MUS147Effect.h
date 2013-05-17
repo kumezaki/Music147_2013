@@ -25,6 +25,6 @@
     UInt32 readPos;
 }
 
--(void)processAudioBuffer:(Float64*)buffer:(UInt32)num_samples;
+-(void)processAudioBuffer:(Float64*)buffer :(UInt32)num_samples;
 
 @end
