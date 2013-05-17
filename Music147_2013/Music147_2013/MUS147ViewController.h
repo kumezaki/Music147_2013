@@ -27,6 +27,7 @@
 -(IBAction)seqPlay:(id)sender;
 -(IBAction)seqStop:(id)sender;
 -(IBAction)seqRewind:(id)sender;
+-(IBAction)seqRec:(id)sender;
 
 -(IBAction)seqWave:(id)sender;
 

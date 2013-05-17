@@ -21,6 +21,6 @@
 @property (readwrite) Float64 amp;
 @property (readwrite) Float64 speed;
 
--(void)addToAudioBuffer:(Float64*)buffer:(UInt32)num_samples;
+-(void)addToAudioBuffer:(Float64*)buffer :(UInt32)num_samples;
 
 @end

@@ -19,7 +19,7 @@
     return self;
 }
 
--(void)processAudioBuffer:(Float64*)buffer:(UInt32)num_samples
+-(void)processAudioBuffer:(Float64*)buffer :(UInt32)num_samples
 {
     for (UInt32 i = 0; i < num_samples; i++)
     {

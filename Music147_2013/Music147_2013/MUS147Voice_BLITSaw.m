@@ -30,7 +30,7 @@
     C2_ = 1. / p_;
 }
 
--(void)addToAudioBuffer:(Float64*)buffer:(UInt32)num_samples
+-(void)addToAudioBuffer:(Float64*)buffer :(UInt32)num_samples
 {
     // https://ccrma.stanford.edu/software/stk/classstk_1_1BlitSaw.html
     // http://www.music.mcgill.ca/~gary/courses/2013/307/week5/bandlimited.html#SECTION00027000000000000000

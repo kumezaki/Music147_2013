@@ -30,7 +30,7 @@
     m_ = 2 * maxHarmonics + 1;
 }
 
--(void)addToAudioBuffer:(Float64*)buffer:(UInt32)num_samples
+-(void)addToAudioBuffer:(Float64*)buffer :(UInt32)num_samples
 {
 #if 1
     // https://ccrma.stanford.edu/software/stk/classstk_1_1Blit.html

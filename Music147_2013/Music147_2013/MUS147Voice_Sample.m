@@ -38,7 +38,7 @@
 		NSLog(@"AudioFileClose %ld",result);
 }
 
--(void)addToAudioBuffer:(Float64*)buffer:(UInt32)num_samples
+-(void)addToAudioBuffer:(Float64*)buffer :(UInt32)num_samples
 {
     /* set up arguments needed by AudioFileReadPackets */
     UInt32 numReadPackets = num_samples * speed;
