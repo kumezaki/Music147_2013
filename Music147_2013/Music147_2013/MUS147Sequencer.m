@@ -12,6 +12,8 @@
 
 @synthesize scoreTime;
 @synthesize bpm;
+@synthesize playing;
+@synthesize recording;
 
 -(id)init
 {

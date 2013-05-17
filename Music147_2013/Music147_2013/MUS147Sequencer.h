@@ -20,6 +20,8 @@
 
 @property (readwrite) Float64 scoreTime;
 @property (readwrite) Float64 bpm;
+@property (readonly) BOOL playing;;
+@property (readonly) BOOL recording;
 
 -(void)advanceScoreTime:(Float64)elapsed_seconds;
 
