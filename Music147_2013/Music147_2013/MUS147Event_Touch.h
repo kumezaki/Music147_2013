@@ -23,4 +23,7 @@ enum {
 @property (readwrite) Float64 y;
 @property (readwrite) UInt8 type;
 
++(Float64)xToFreq:(Float64)x;
++(Float64)yToAmp:(Float64)y;
+
 @end

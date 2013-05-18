@@ -8,6 +8,8 @@
 
 #import "MUS147View.h"
 
+#import "MUS147Event_Touch.h"
+
 #import "MUS147AQPlayer.h"
 extern MUS147AQPlayer* aqp;
 
@@ -57,8 +59,8 @@ extern MUS147AQPlayer* aqp;
         Float64 x = pt.x/self.bounds.size.width;
         Float64 y = pt.y/self.bounds.size.height;
         
-        [aqp getSynthVoice].freq = x * 2000.;
-        [aqp getSynthVoice].amp = 1. - y;
+        [aqp getSynthVoice].amp = [MUS147Event_Touch yToAmp:y];
+        [aqp getSynthVoice].freq = [MUS147Event_Touch xToFreq:x];
         
         if (aqp.sequencer.recording)
             [aqp.sequencer addTouchEvent:x :y :YES];

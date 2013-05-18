@@ -15,22 +15,21 @@ extern MUS147AQPlayer* aqp;
 
 @synthesize startTime;
 @synthesize duration;
-@synthesize noteNum;
 @synthesize on;
 
 -(void)doOn
 {
-    voice = [aqp getSynthVoice];
-    voice.freq = pow(2.,((Float64)noteNum-69)/12.)*440.;
+    if (voice == nil)
+        voice = [aqp getSynthVoice];
+
     on = YES;
-    voice.amp = 0.25;
 }
 
 -(void)doOff
 {
-    voice.amp = 0.0;
-    on = NO;
     voice = nil;
+
+    on = NO;
 }
 
 @end

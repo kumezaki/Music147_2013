@@ -14,6 +14,7 @@
 		2158C831173AF7F300F2263B /* MUS147Voice_BLITSaw.m in Sources */ = {isa = PBXBuildFile; fileRef = 2158C82F173AF7F300F2263B /* MUS147Voice_BLITSaw.m */; };
 		215C4BFA17107CC50095C74C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 215C4BF917107CC50095C74C /* AudioToolbox.framework */; };
 		215C4C0217107E360095C74C /* MUS147AQPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 215C4C0117107E360095C74C /* MUS147AQPlayer.m */; };
+		216E863D1747DE5000670512 /* MUS147Event_Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 216E863C1747DE5000670512 /* MUS147Event_Note.m */; };
 		218E9DC8170FDEDA00306268 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218E9DC7170FDEDA00306268 /* UIKit.framework */; };
 		218E9DCA170FDEDA00306268 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218E9DC9170FDEDA00306268 /* Foundation.framework */; };
 		218E9DCC170FDEDA00306268 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218E9DCB170FDEDA00306268 /* CoreGraphics.framework */; };
@@ -50,6 +51,8 @@
 		215C4BF917107CC50095C74C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		215C4C0017107E360095C74C /* MUS147AQPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147AQPlayer.h; sourceTree = "<group>"; };
 		215C4C0117107E360095C74C /* MUS147AQPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147AQPlayer.m; sourceTree = "<group>"; };
+		216E863B1747DE5000670512 /* MUS147Event_Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Event_Note.h; sourceTree = "<group>"; };
+		216E863C1747DE5000670512 /* MUS147Event_Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Event_Note.m; sourceTree = "<group>"; };
 		218E9DC3170FDEDA00306268 /* Music147_2013.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Music147_2013.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		218E9DC7170FDEDA00306268 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		218E9DC9170FDEDA00306268 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -143,6 +146,8 @@
 				2149E6B017357BD500734894 /* MUS147Effect_Limiter.m */,
 				E9B92E2F173B22B10014404F /* MUS147Event.h */,
 				E9B92E30173B22B10014404F /* MUS147Event.m */,
+				216E863B1747DE5000670512 /* MUS147Event_Note.h */,
+				216E863C1747DE5000670512 /* MUS147Event_Note.m */,
 				21C078F71746AF8800FBB7BA /* MUS147Event_Touch.h */,
 				21C078F81746AF8800FBB7BA /* MUS147Event_Touch.m */,
 				E9B92E31173B22B10014404F /* MUS147Sequence.h */,
@@ -269,6 +274,7 @@
 				E9B92E36173B22B10014404F /* MUS147Sequence.m in Sources */,
 				E9B92E37173B22B10014404F /* MUS147Sequencer.m in Sources */,
 				21C078F91746AF8800FBB7BA /* MUS147Event_Touch.m in Sources */,
+				216E863D1747DE5000670512 /* MUS147Event_Note.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

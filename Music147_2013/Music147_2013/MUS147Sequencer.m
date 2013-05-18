@@ -74,17 +74,14 @@
     playing = NO;
     recording = NO;
 
-    for (UInt32 i = 0; i < seq.numEvents; i++)
-    {
-        MUS147Event* event = [seq getEvent:i];
-        if (event.on)
-            [event doOff];
-    }
+    [self allOnNotesOff];
 }
 
 -(void)rewind
 {
     scoreTime = 0.;
+
+    [self allOnNotesOff];
 }
 
 -(void)record
@@ -94,6 +91,16 @@
     
     // reset the number of events in the sequence
     seq.numEvents = 0;
+}
+
+-(void)allOnNotesOff
+{
+    for (UInt32 i = 0; i < seq.numEvents; i++)
+    {
+        MUS147Event* event = [seq getEvent:i];
+        if (event.on)
+            [event doOff];
+    }
 }
 
 -(void)addTouchEvent:(Float64)x :(Float64)y :(BOOL)on

@@ -21,8 +21,7 @@ extern MUS147AQPlayer* aqp;
 {
 //    NSLog(@"%f %f %f %s %f touch %s",startTime,x,y,"doOn",duration,type?"on":"off");
 
-    if (voice == nil)
-        voice = [aqp getSynthVoice];
+    [super doOn];
     
     if (type == kMUS147Event_Touch_OFF)
     {
@@ -30,20 +29,26 @@ extern MUS147AQPlayer* aqp;
     }
     else
     {
-        voice.amp = 1. - y;
-        voice.freq = x * 2000.;
+        voice.amp = [MUS147Event_Touch yToAmp:y];
+        voice.freq = [MUS147Event_Touch xToFreq:x];
     }
-
-    on = YES;
 }
 
 -(void)doOff
 {
 //    NSLog(@"%f %f %f %s %f touch %s",startTime,x,y,"doOff",duration,type?"on":"off");
 
-    voice = nil;
+    [super doOff];
+}
 
-    on = NO;
++(Float64)xToFreq:(Float64)x
+{
+    return x * 2000.;
+}
+
++(Float64)yToAmp:(Float64)y
+{
+    return 1. - y;
 }
 
 @end

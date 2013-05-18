@@ -13,14 +13,12 @@
 @interface MUS147Event : NSObject {
     Float64 startTime;
     Float64 duration;
-    SInt16 noteNum;
     BOOL on;
     MUS147Voice* voice;    
 }
 
 @property (readwrite) Float64 startTime;
 @property (readwrite) Float64 duration;
-@property (readwrite) SInt16 noteNum;
 @property (readwrite) BOOL on;
 
 -(void)doOn;
