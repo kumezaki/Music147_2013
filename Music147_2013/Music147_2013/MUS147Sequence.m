@@ -15,7 +15,10 @@
 -(id)init
 {
     self = [super init];
-    
+
+#if 1
+    numEvents = 0;
+#else
     events[0] = [[MUS147Event alloc] init];
     events[0].startTime = 0.;
     events[0].duration = 1.;
@@ -37,6 +40,7 @@
     events[3].noteNum = 62;
     
     numEvents = 4;
+#endif
     
     return self;
 }
@@ -44,6 +48,11 @@
 -(MUS147Event*)getEvent:(UInt32)pos
 {
     return events[pos];
+}
+
+-(void)addEvent:(MUS147Event*)event
+{
+    events[numEvents++] = event;
 }
 
 @end

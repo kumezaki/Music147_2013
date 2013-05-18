@@ -37,35 +37,36 @@
     Float64 elapsed_beats = bpm / 60. * elapsed_seconds;
     scoreTime += elapsed_beats;
     
-    for (UInt32 i = 0; i < seq.numEvents; i++)
-    {
-        MUS147Event* event = [seq getEvent:i];
+    if (playing)
+        for (UInt32 i = 0; i < seq.numEvents; i++)
+        {
+            MUS147Event* event = [seq getEvent:i];
 
-        if (scoreTime < event.startTime)
-        {
-            // WAIT
-            if (event.on)
-                [event doOff];
+            if (scoreTime < event.startTime)
+            {
+                // WAIT
+                if (event.on)
+                    [event doOff];
+            }
+            else if (scoreTime >= event.startTime + event.duration)
+            {
+                // DONE
+                if (event.on)
+                    [event doOff];
+            }
+            else
+            {
+                // PLAYING
+                if (!event.on)
+                    [event doOn];
+            }
         }
-        else if (scoreTime >= event.startTime + event.duration)
-        {
-            // DONE
-            if (event.on)
-                [event doOff];
-        }
-        else
-        {
-            // PLAYING
-            if (!event.on)
-                [event doOn];
-        }
-    }
-         
 }
 
 -(void)play
 {
     playing = YES;
+    recording = NO;
 }
 
 -(void)stop
@@ -76,7 +77,8 @@
     for (UInt32 i = 0; i < seq.numEvents; i++)
     {
         MUS147Event* event = [seq getEvent:i];
-        [event doOff];
+        if (event.on)
+            [event doOff];
     }
 }
 
@@ -87,19 +89,33 @@
 
 -(void)record
 {
+    playing = NO;
     recording = YES;
+    
+    // reset the number of events in the sequence
+    seq.numEvents = 0;
 }
 
 -(void)addTouchEvent:(Float64)x :(Float64)y :(BOOL)on
 {
     if (!recording) return;
     
+    if (seq.numEvents > 0)
+    {
+        MUS147Event* prev_e = [seq getEvent:(seq.numEvents-1)];
+        prev_e.duration = scoreTime - prev_e.startTime;
+        
+//        NSLog(@"%f %f %f %s PREV(%f,%f)",scoreTime,x,y,on?"YES":"NO",prev_e.startTime,prev_e.duration);
+    }
+
     MUS147Event_Touch* e = [[MUS147Event_Touch alloc] init];
     e.startTime = scoreTime;
-    e.duration; // need to assign this
+    e.duration = MAXFLOAT;
     e.x = x;
     e.y = y;
-    e.on = on ? kMUS147Event_Touch_ON : kMUS147Event_Touch_OFF;
+    e.type = on ? kMUS147Event_Touch_ON : kMUS147Event_Touch_OFF;
+    
+    [seq addEvent:e];
 }
 
 @end
