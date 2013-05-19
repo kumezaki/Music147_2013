@@ -9,13 +9,14 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <Foundation/Foundation.h>
 
+#import "MUS147AQShared.h"
 #import "MUS147Sequencer.h"
 #import "MUS147Voice.h"
 
 @class MUS147Effect;
 
-// number of buffers used by system
-#define kNumBuffers     3
+// number of buffers used by AQ system for playback
+#define kNumBuffers_Playback     3
 
 // number of possible voices
 #define kNumVoices      4
@@ -23,16 +24,13 @@
 // number of possible effects
 #define kNumEffects      2
 
-// sample rate
-#define kSR				22050.
-
 @interface MUS147AQPlayer : NSObject {
 
 	AudioQueueRef				queue;
-	AudioQueueBufferRef			buffers[kNumBuffers];
+	AudioQueueBufferRef			buffers[kNumBuffers_Playback];
 	AudioStreamBasicDescription	dataFormat;
     
-    UInt8 synthVoice;
+    UInt8 synthVoiceType; // 0 for BLIT, 1 for BLITSaw
     
     MUS147Voice* voice[kNumVoices];
     
@@ -41,6 +39,7 @@
     MUS147Sequencer* sequencer;
 }
 
+@property (readwrite) UInt8 synthVoiceType;
 @property (readonly) MUS147Sequencer* sequencer;
 
 -(void)setup;
@@ -51,10 +50,11 @@
 -(MUS147Voice*)getVoice:(UInt8)pos;
 
 -(MUS147Voice*)getSynthVoice;
--(void)setSynthVoice:(UInt8)pos;
+
+-(MUS147Voice*)getRecordVoice;
 
 -(void)reportElapsedFrames:(UInt32)num_frames;
 
--(void)fillAudioBuffer:(Float64*)buffer :(UInt32)num_samples;
+-(void)doAudioBuffer:(Float64*)buffer :(UInt32)num_samples;
 
 @end

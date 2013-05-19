@@ -33,28 +33,37 @@ extern MUS147AQPlayer* aqp;
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    if (touch == nil) return; /* guard */
-    
-    // Drawing code
-    UIColor *uciBlueColor = [UIColor colorWithRed:0./255. green:34./255. blue:68./255. alpha:1.];
-    UIColor *uciGoldColor = [UIColor colorWithRed:255./255. green:222./255. blue:108./255. alpha:1.];
+    for (UInt8 i = 0; i < kMaxNumTouches; i++)
+    {
+        if (touch[i] == nil) continue; /* guard */
+        
+        // Drawing code
+        UIColor *uciBlueColor = [UIColor colorWithRed:0./255. green:34./255. blue:68./255. alpha:1.];
+        UIColor *uciGoldColor = [UIColor colorWithRed:255./255. green:222./255. blue:108./255. alpha:1.];
 
-    CGPoint pt = [touch locationInView:self];
+        CGPoint pt = [touch[i] locationInView:self];
 
-    Float64 w = 30.;
-    Float64 h = w;
+        Float64 w = 30.;
+        Float64 h = w;
 
-    [uciGoldColor set];
-    UIRectFill(CGRectMake(pt.x-w/2, pt.y-h/2, w, h));
+        [uciGoldColor set];
+        UIRectFill(CGRectMake(pt.x-w/2, pt.y-h/2, w, h));
 
-    [uciBlueColor set];
-    UIRectFrame(CGRectMake(pt.x-w/2, pt.y-h/2, w, h));
+        [uciBlueColor set];
+        UIRectFrame(CGRectMake(pt.x-w/2, pt.y-h/2, w, h));
+    }
 }
 
 -(void)doTouchesOn:(NSSet *)touches withEvent:(UIEvent *)event
 {
     for (UITouch* t in touches)
     {
+        SInt8 t_pos = [self getTouchPos:t];
+        if (t_pos < 0)
+            t_pos = [self addTouch:t];
+        if (t_pos < 0)
+            continue;
+
         CGPoint pt = [t locationInView:self];
         Float64 x = pt.x/self.bounds.size.width;
         Float64 y = pt.y/self.bounds.size.height;
@@ -65,23 +74,61 @@ extern MUS147AQPlayer* aqp;
         if (aqp.sequencer.recording)
             [aqp.sequencer addTouchEvent:x :y :YES];
 
-        touch = t;
+        touch[0] = t;
     }
     [self setNeedsDisplay];
 }
 
 -(void)doTouchesOff:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [aqp getSynthVoice].amp = 0.;
+    for (UITouch* t in touches)
+    {
+        SInt8 t_pos = [self removeTouch:t];
+        if (t_pos < 0)
+        {
+            NSLog(@"could not remove touch");
+            continue;
+        }
 
-    if (aqp.sequencer.recording)
-        [aqp.sequencer addTouchEvent:0. :0. :NO];
+        [aqp getSynthVoice].amp = 0.;
 
-    touch = nil;
+        if (aqp.sequencer.recording)
+            [aqp.sequencer addTouchEvent:0. :0. :NO];
 
+        touch[t_pos] = nil;
+    }
     [self setNeedsDisplay];
 }
-    
+
+-(SInt8)getTouchPos:(UITouch*)t
+{
+    for (UInt8 i = 0; i < kMaxNumTouches; i++)
+        if (t == touch[i]) return i;
+    return -1;
+}
+
+-(SInt8)addTouch:(UITouch*)t
+{
+    for (UInt8 i = 0; i < kMaxNumTouches; i++)
+        if (touch[i] == nil)
+        {
+            touch[i] = t;
+            return i;
+        }
+    return -1;
+}
+
+-(SInt8)removeTouch:(UITouch*)t
+{
+    for (UInt8 i = 0; i < kMaxNumTouches; i++)
+        if (t == touch[i])
+        {
+            touch[i] = nil;
+            return i;
+        }
+    return -1;
+}
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self doTouchesOn:touches withEvent:event];

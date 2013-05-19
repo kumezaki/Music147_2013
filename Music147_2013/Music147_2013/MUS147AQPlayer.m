@@ -10,7 +10,8 @@
 
 #import "MUS147Effect_Delay.h"
 #import "MUS147Effect_Limiter.h"
-#import "MUS147Voice_Sample.h"
+#import "MUS147Voice_Sample_SF.h"
+#import "MUS147Voice_Sample_Mem.h"
 #import "MUS147Voice_Synth.h"
 #import "MUS147Voice_BLIT.h"
 #import "MUS147Voice_BLITSaw.h"
@@ -31,7 +32,7 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     memset(buffer,0,sizeof(Float64)*numFrames);
 	
     // call AQPlayer fillAudioBuffer method to get a new block of samples
-	[aqp fillAudioBuffer:buffer:numFrames];
+	[aqp doAudioBuffer:buffer:numFrames];
 	
     // fill the outgoing buffer as SInt16 type samples
 	for (SInt32 i = 0; i < numFrames; i++)
@@ -50,13 +51,14 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 @implementation MUS147AQPlayer
 
 @synthesize sequencer;
+@synthesize synthVoiceType;
 
-- (void)dealloc {
-
+-(void)dealloc
+{
 	[self stop];
 }
 
-- (id)init
+-(id)init
 {
     self = [super init];
     
@@ -67,8 +69,10 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
         switch (i)
         {
             case 0:
+                voice[i] = [[MUS147Voice_Sample_Mem alloc] init];
+                break;
             case 1:
-                voice[i] = [[MUS147Voice_Sample alloc] init];
+                voice[i] = [[MUS147Voice_Sample_SF alloc] init];
                 break;
             case 2:
                 voice[i] = [[MUS147Voice_BLIT alloc] init];
@@ -119,7 +123,7 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 	if (result != noErr)
 		NSLog(@"AudioQueueNewOutput %ld\n",result);
 	
-    for (SInt32 i = 0; i < kNumBuffers; i++)
+    for (SInt32 i = 0; i < kNumBuffers_Playback; i++)
 	{
 		result = AudioQueueAllocateBuffer(queue, 512, &buffers[i]);
 		if (result != noErr)
@@ -136,7 +140,7 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
         [self setup];
     
     // prime the queue with some data before starting
-    for (SInt32 i = 0; i < kNumBuffers; ++i)
+    for (SInt32 i = 0; i < kNumBuffers_Playback; ++i)
         MUS147AQBufferCallback(nil, queue, buffers[i]);
 	
     result = AudioQueueStart(queue, nil);
@@ -160,12 +164,12 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 
 -(MUS147Voice*)getSynthVoice
 {
-    return voice[2+synthVoice];
+    return voice[2+synthVoiceType];
 }
 
--(void)setSynthVoice:(UInt8)pos
+-(MUS147Voice*)getRecordVoice
 {
-    synthVoice = pos;
+    return voice[0];
 }
 
 -(void)reportElapsedFrames:(UInt32)num_frames
@@ -175,18 +179,18 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 //    NSLog(@"%f",num_frames/kSR);
 }
 
--(void)fillAudioBuffer:(Float64*)buffer :(UInt32)num_samples
+-(void)doAudioBuffer:(Float64*)buffer :(UInt32)num_samples
 {
     for (UInt8 i = 0; i < kNumVoices; i++)
     {
         switch (i)
         {
             case 2:
-                if (synthVoice == 0)
+                if (synthVoiceType == 0)
                     [voice[i] addToAudioBuffer:buffer:num_samples];
                 break;
             case 3:
-                if (synthVoice == 1)
+                if (synthVoiceType == 1)
                     [voice[i] addToAudioBuffer:buffer:num_samples];
                 break;
             default:

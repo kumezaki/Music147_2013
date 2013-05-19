@@ -11,6 +11,9 @@
 #import "MUS147AQPlayer.h"
 extern MUS147AQPlayer* aqp;
 
+#import "MUS147AQRecorder.h"
+extern MUS147AQRecorder* aqr;
+
 @interface MUS147ViewController ()
 
 @end
@@ -46,6 +49,16 @@ extern MUS147AQPlayer* aqp;
     [aqp getVoice:1].speed = freq1Slider.value * 2.;
 }
 
+-(IBAction)sampleRecStart:(id)sender
+{
+    [aqr start];
+}
+
+-(IBAction)sampleRecStop:(id)sender
+{
+    [aqr stop];
+}
+
 -(IBAction)setAmp1:(id)sender
 {
     [aqp getVoice:1].amp = amp1Slider.value;
@@ -73,7 +86,7 @@ extern MUS147AQPlayer* aqp;
 
 -(IBAction)seqWave:(id)sender
 {
-    [aqp setSynthVoice:waveSegmentedControl.selectedSegmentIndex];
+    aqp.synthVoiceType = waveSegmentedControl.selectedSegmentIndex;
 }
 
 @end

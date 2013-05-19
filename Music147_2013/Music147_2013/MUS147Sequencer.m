@@ -112,7 +112,7 @@
         MUS147Event* prev_e = [seq getEvent:(seq.numEvents-1)];
         prev_e.duration = scoreTime - prev_e.startTime;
         
-//        NSLog(@"%f %f %f %s PREV(%f,%f)",scoreTime,x,y,on?"YES":"NO",prev_e.startTime,prev_e.duration);
+//      NSLog(@"%f %f %f %s PREV(%f,%f)",scoreTime,x,y,on?"YES":"NO",prev_e.startTime,prev_e.duration);
     }
 
     MUS147Event_Touch* e = [[MUS147Event_Touch alloc] init];
