@@ -14,6 +14,7 @@
 #import "MUS147Voice.h"
 
 @class MUS147Effect;
+@class MUS147Effect_BiQuad;
 
 // number of buffers used by AQ system for playback
 #define kNumBuffers_Playback     3
@@ -22,7 +23,7 @@
 #define kNumVoices      4
 
 // number of possible effects
-#define kNumEffects      2
+#define kNumEffects     3
 
 @interface MUS147AQPlayer : NSObject {
 
@@ -48,10 +49,10 @@
 -(OSStatus)stop;
 
 -(MUS147Voice*)getVoice:(UInt8)pos;
-
 -(MUS147Voice*)getSynthVoice;
-
 -(MUS147Voice*)getRecordVoice;
+
+-(MUS147Effect_BiQuad*)getBiQuad;
 
 -(void)reportElapsedFrames:(UInt32)num_frames;
 

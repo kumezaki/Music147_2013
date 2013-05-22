@@ -8,6 +8,7 @@
 
 #import "MUS147AQPlayer.h"
 
+#import "MUS147Effect_BiQuad.h"
 #import "MUS147Effect_Delay.h"
 #import "MUS147Effect_Limiter.h"
 #import "MUS147Voice_Sample_SF.h"
@@ -90,9 +91,16 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
         switch (i)
         {
             case 0:
+            {
+                MUS147Effect_BiQuad* bq = [[MUS147Effect_BiQuad alloc] init];
+                [bq biQuad_set:LPF:0.:5000.:kSR:1.0];
+                effect[i] = bq;
+                break;
+            }
+            case 1:
                 effect[i] = [[MUS147Effect_Delay alloc] init];
                 break;
-            case 1:
+            case 2:
                 effect[i] = [[MUS147Effect_Limiter alloc] init];
                 break;
             default:
@@ -172,6 +180,11 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     return voice[0];
 }
 
+-(MUS147Effect_BiQuad*)getBiQuad
+{
+    return (MUS147Effect_BiQuad*)effect[0];
+}
+
 -(void)reportElapsedFrames:(UInt32)num_frames
 {
     [sequencer advanceScoreTime:num_frames/kSR];
@@ -201,7 +214,12 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     
     for (UInt8 i = 0; i < kNumEffects; i++)
     {
-        [effect[i] processAudioBuffer:buffer:num_samples];
+        switch (i)
+        {
+            default:
+                [effect[i] processAudioBuffer:buffer:num_samples];
+                break;
+        }
     }
 }
 

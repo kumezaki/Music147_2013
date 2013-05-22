@@ -14,6 +14,8 @@ extern MUS147AQPlayer* aqp;
 #import "MUS147AQRecorder.h"
 extern MUS147AQRecorder* aqr;
 
+#import "MUS147Effect_BiQuad.h"
+
 @interface MUS147ViewController ()
 
 @end
@@ -32,10 +34,9 @@ extern MUS147AQRecorder* aqr;
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)setFreq0:(id)sender
+-(IBAction)setSpeed0:(id)sender
 {
-//    [aqp getVoice:0].freq = freq0Slider.value * 1000.;
-    [aqp getVoice:0].speed = freq0Slider.value * 2.;
+    [aqp getVoice:0].speed = speed0Slider.value * 2.;
 }
 
 -(IBAction)setAmp0:(id)sender
@@ -43,10 +44,15 @@ extern MUS147AQRecorder* aqr;
     [aqp getVoice:0].amp = amp0Slider.value;
 }
 
--(IBAction)setFreq1:(id)sender
+-(IBAction)setSpeed1:(id)sender
 {
-//    [aqp getVoice:1].freq = freq1Slider.value * 1000.;
-    [aqp getVoice:1].speed = freq1Slider.value * 2.;
+    [aqp getVoice:1].speed = speed1Slider.value * 2.;
+}
+
+-(IBAction)setCutoff:(id)sender
+{
+    MUS147Effect_BiQuad* bq = [aqp getBiQuad];
+    [bq biQuad_set:LPF:0.:(cutoffSlider.value * 10000.):kSR:1.0];
 }
 
 -(IBAction)sampleRecStart:(id)sender

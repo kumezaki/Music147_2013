@@ -18,6 +18,7 @@
 		216E864517480DD600670512 /* MUS147AQRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 216E864417480DD600670512 /* MUS147AQRecorder.m */; };
 		216E864D17481A7000670512 /* MUS147Voice_Sample_Mem.m in Sources */ = {isa = PBXBuildFile; fileRef = 216E864C17481A7000670512 /* MUS147Voice_Sample_Mem.m */; };
 		216E865117481B3200670512 /* MUS147Voice_Sample_SF.m in Sources */ = {isa = PBXBuildFile; fileRef = 216E865017481B3200670512 /* MUS147Voice_Sample_SF.m */; };
+		216E86581749882100670512 /* MUS147Effect_BiQuad.m in Sources */ = {isa = PBXBuildFile; fileRef = 216E86571749882100670512 /* MUS147Effect_BiQuad.m */; };
 		218E9DC8170FDEDA00306268 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218E9DC7170FDEDA00306268 /* UIKit.framework */; };
 		218E9DCA170FDEDA00306268 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218E9DC9170FDEDA00306268 /* Foundation.framework */; };
 		218E9DCC170FDEDA00306268 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218E9DCB170FDEDA00306268 /* CoreGraphics.framework */; };
@@ -63,6 +64,8 @@
 		216E864C17481A7000670512 /* MUS147Voice_Sample_Mem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Voice_Sample_Mem.m; sourceTree = "<group>"; };
 		216E864F17481B3100670512 /* MUS147Voice_Sample_SF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Voice_Sample_SF.h; sourceTree = "<group>"; };
 		216E865017481B3200670512 /* MUS147Voice_Sample_SF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Voice_Sample_SF.m; sourceTree = "<group>"; };
+		216E86561749882100670512 /* MUS147Effect_BiQuad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Effect_BiQuad.h; sourceTree = "<group>"; };
+		216E86571749882100670512 /* MUS147Effect_BiQuad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Effect_BiQuad.m; sourceTree = "<group>"; };
 		218E9DC3170FDEDA00306268 /* Music147_2013.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Music147_2013.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		218E9DC7170FDEDA00306268 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		218E9DC9170FDEDA00306268 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -153,6 +156,8 @@
 				218E9DD7170FDEDA00306268 /* MUS147AppDelegate.m */,
 				219D448717344C7000A6A28F /* MUS147Effect.h */,
 				219D448817344C7000A6A28F /* MUS147Effect.m */,
+				216E86561749882100670512 /* MUS147Effect_BiQuad.h */,
+				216E86571749882100670512 /* MUS147Effect_BiQuad.m */,
 				2149E6AB17357B6F00734894 /* MUS147Effect_Delay.h */,
 				2149E6AC17357B6F00734894 /* MUS147Effect_Delay.m */,
 				2149E6AF17357BD500734894 /* MUS147Effect_Limiter.h */,
@@ -295,6 +300,7 @@
 				216E864517480DD600670512 /* MUS147AQRecorder.m in Sources */,
 				216E864D17481A7000670512 /* MUS147Voice_Sample_Mem.m in Sources */,
 				216E865117481B3200670512 /* MUS147Voice_Sample_SF.m in Sources */,
+				216E86581749882100670512 /* MUS147Effect_BiQuad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,7 +43,7 @@
 						<string key="NSFrame">{{64, 37}, {188, 23}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="804405062"/>
+						<reference key="NSNextKeyView" ref="1050478355"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -69,6 +69,7 @@
 						<string key="NSFrame">{{6, 10}, {52, 44}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="289581523"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -104,6 +105,7 @@
 						<string key="NSFrame">{{253, 10}, {58, 44}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="804405062"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -152,7 +154,7 @@
 						<string key="NSFrame">{{20, 205}, {280, 184}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="762108254"/>
+						<reference key="NSNextKeyView" ref="368808045"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -160,6 +162,7 @@
 								<int key="NSID">2</int>
 							</object>
 						</object>
+						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 					<object class="IBUIButton" id="839660580">
@@ -254,12 +257,27 @@
 						<reference key="IBUIFontDescription" ref="416645317"/>
 						<reference key="IBUIFont" ref="756494045"/>
 					</object>
+					<object class="IBUISlider" id="368808045">
+						<reference key="NSNextResponder" ref="774585933"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{18, 397}, {284, 23}}</string>
+						<reference key="NSSuperview" ref="774585933"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="762108254"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<float key="IBUIValue">0.5</float>
+					</object>
 					<object class="IBUISegmentedControl" id="762108254">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{109, 404}, {103, 30}}</string>
+						<string key="NSFrame">{{109, 427}, {103, 30}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -291,7 +309,7 @@
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="289581523"/>
+				<reference key="NSNextKeyView" ref="314767970"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MC43NQA</bytes>
@@ -331,27 +349,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">freq0Slider</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="289581523"/>
-					</object>
-					<int key="connectionID">20</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">amp0Slider</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="389900834"/>
 					</object>
 					<int key="connectionID">21</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">freq1Slider</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="804405062"/>
-					</object>
-					<int key="connectionID">28</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -370,6 +372,30 @@
 					<int key="connectionID">58</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">cutoffSlider</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="368808045"/>
+					</object>
+					<int key="connectionID">71</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">speed0Slider</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="289581523"/>
+					</object>
+					<int key="connectionID">72</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">speed1Slider</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="87123187"/>
+					</object>
+					<int key="connectionID">73</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">setAmp0:</string>
 						<reference key="source" ref="389900834"/>
@@ -380,12 +406,12 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">setFreq0:</string>
+						<string key="label">setSpeed0:</string>
 						<reference key="source" ref="289581523"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">13</int>
 					</object>
-					<int key="connectionID">22</int>
+					<int key="connectionID">75</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -407,21 +433,12 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">setFreq0:</string>
+						<string key="label">setSpeed1:</string>
 						<reference key="source" ref="804405062"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">13</int>
 					</object>
-					<int key="connectionID">26</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">setFreq1:</string>
-						<reference key="source" ref="804405062"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">13</int>
-					</object>
-					<int key="connectionID">30</int>
+					<int key="connectionID">74</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -486,6 +503,15 @@
 					</object>
 					<int key="connectionID">68</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">setCutoff:</string>
+						<reference key="source" ref="368808045"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">13</int>
+					</object>
+					<int key="connectionID">70</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -522,6 +548,7 @@
 							<reference ref="314767970"/>
 							<reference ref="1050478355"/>
 							<reference ref="289581523"/>
+							<reference ref="368808045"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -586,6 +613,11 @@
 						<reference key="object" ref="1050478355"/>
 						<reference key="parent" ref="774585933"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">69</int>
+						<reference key="object" ref="368808045"/>
+						<reference key="parent" ref="774585933"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -611,6 +643,7 @@
 				<string key="61.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="63.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="65.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="69.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<boolean value="NO" key="8.IBNSViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
@@ -618,7 +651,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">68</int>
+			<int key="maxID">75</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -643,8 +676,9 @@
 						<string key="seqWave:">id</string>
 						<string key="setAmp0:">id</string>
 						<string key="setAmp1:">id</string>
-						<string key="setFreq0:">id</string>
-						<string key="setFreq1:">id</string>
+						<string key="setCutoff:">id</string>
+						<string key="setSpeed0:">id</string>
+						<string key="setSpeed1:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="sampleRecStart:">
@@ -683,20 +717,25 @@
 							<string key="name">setAmp1:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="setFreq0:">
-							<string key="name">setFreq0:</string>
+						<object class="IBActionInfo" key="setCutoff:">
+							<string key="name">setCutoff:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="setFreq1:">
-							<string key="name">setFreq1:</string>
+						<object class="IBActionInfo" key="setSpeed0:">
+							<string key="name">setSpeed0:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="setSpeed1:">
+							<string key="name">setSpeed1:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="amp0Slider">UISlider</string>
 						<string key="amp1Slider">UISlider</string>
-						<string key="freq0Slider">UISlider</string>
-						<string key="freq1Slider">UISlider</string>
+						<string key="cutoffSlider">UISlider</string>
+						<string key="speed0Slider">UISlider</string>
+						<string key="speed1Slider">UISlider</string>
 						<string key="waveSegmentedControl">UISegmentedControl</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -708,12 +747,16 @@
 							<string key="name">amp1Slider</string>
 							<string key="candidateClassName">UISlider</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="freq0Slider">
-							<string key="name">freq0Slider</string>
+						<object class="IBToOneOutletInfo" key="cutoffSlider">
+							<string key="name">cutoffSlider</string>
 							<string key="candidateClassName">UISlider</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="freq1Slider">
-							<string key="name">freq1Slider</string>
+						<object class="IBToOneOutletInfo" key="speed0Slider">
+							<string key="name">speed0Slider</string>
+							<string key="candidateClassName">UISlider</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="speed1Slider">
+							<string key="name">speed1Slider</string>
 							<string key="candidateClassName">UISlider</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="waveSegmentedControl">

@@ -11,18 +11,20 @@
 @interface MUS147ViewController : UIViewController {
 
     // member variables here
-    IBOutlet UISlider* freq0Slider;
+    IBOutlet UISlider* speed0Slider;
     IBOutlet UISlider* amp0Slider;
-    IBOutlet UISlider* freq1Slider;
+    IBOutlet UISlider* speed1Slider;
     IBOutlet UISlider* amp1Slider;
+    IBOutlet UISlider* cutoffSlider;
     IBOutlet UISegmentedControl* waveSegmentedControl;
 }
 
 // methods here
--(IBAction)setFreq0:(id)sender;
+-(IBAction)setSpeed0:(id)sender;
 -(IBAction)setAmp0:(id)sender;
--(IBAction)setFreq1:(id)sender;
+-(IBAction)setSpeed1:(id)sender;
 -(IBAction)setAmp1:(id)sender;
+-(IBAction)setCutoff:(id)sender;
 
 -(IBAction)sampleRecStart:(id)sender;
 -(IBAction)sampleRecStop:(id)sender;
