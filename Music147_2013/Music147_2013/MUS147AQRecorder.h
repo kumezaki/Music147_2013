@@ -23,7 +23,7 @@
     MUS147Voice_Sample_Mem* voice;
 }
 
-@property (readwrite) MUS147Voice_Sample_Mem* voice;
+@property (retain,readwrite) MUS147Voice_Sample_Mem* voice;
 
 -(void)setup;
 
