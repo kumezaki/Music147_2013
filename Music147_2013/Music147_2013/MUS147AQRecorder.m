@@ -111,7 +111,7 @@ void AQRecBufferCallback (void                                *inUserData,
 	return result;
 }
 
--(void)doAudioBuffer:(Float64*)buffer:(UInt32)num_samples
+-(void)doAudioBuffer:(Float64*)buffer :(UInt32)num_samples
 {
 //  NSLog(@"saveAudioBuffer %ld",writePos);
 
