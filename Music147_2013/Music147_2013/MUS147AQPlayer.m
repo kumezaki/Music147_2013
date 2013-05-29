@@ -64,22 +64,26 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     self = [super init];
     
 	aqp = self;
-    
+
+    // first allocate pools of voices ...
+    voice_samp_mem[0] = [[MUS147Voice_Sample_Mem alloc] init];
+    voice_samp_sf[0] = [[MUS147Voice_Sample_SF alloc] init];
+    voice_synth_blit[0] = [[MUS147Voice_BLIT alloc] init];
+    voice_synth_blitsaw[0] = [[MUS147Voice_BLITSaw alloc] init];;
+
+    // ... then assign them to array of active voices
     for (UInt8 i = 0; i < kNumVoices; i++)
     {
         switch (i)
         {
             case 0:
-                voice[i] = [[MUS147Voice_Sample_Mem alloc] init];
+                voice[i] = voice_samp_mem[0];
                 break;
             case 1:
-                voice[i] = [[MUS147Voice_Sample_SF alloc] init];
+                voice[i] = voice_samp_sf[0];
                 break;
             case 2:
-                voice[i] = [[MUS147Voice_BLIT alloc] init];
-                break;
-            case 3:
-                voice[i] = [[MUS147Voice_BLITSaw alloc] init];
+                voice[i] = voice_synth_blit[0];
                 break;
             default:
                 break;
@@ -165,6 +169,21 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 	return result;
 }
 
+-(void)setSynthVoiceType:(UInt8)type
+{
+    synthVoiceType = type;
+    
+    switch (synthVoiceType)
+    {
+        case 0:
+            voice[2] = voice_synth_blit[0];
+            break;
+        case 1:
+            voice[2] = voice_synth_blitsaw[0];
+            break;
+    }
+}
+
 -(MUS147Voice*)getVoice:(UInt8)pos
 {
     return voice[pos];
@@ -172,7 +191,27 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 
 -(MUS147Voice*)getSynthVoice
 {
-    return voice[2+synthVoiceType];
+    MUS147Voice* v = nil;
+    
+    switch (synthVoiceType)
+    {
+        case 0:
+            // for now we've only hard coded one element in the voice_synth_blit array
+            for (UInt8 i = 0; i < 1; i++)
+                if (![voice[i] isOn])
+                    v = voice_synth_blit[0];
+            break;
+        case 1:
+            // for now we've only hard coded one element in the voice_synth_blitsaw array
+            for (UInt8 i = 0; i < 1; i++)
+                if (![voice[i] isOn])
+                    v = voice_synth_blitsaw[0];
+            break;
+        default:
+            break;
+    }
+
+    return v;
 }
 
 -(MUS147Voice*)getRecordVoice
@@ -196,30 +235,12 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 {
     for (UInt8 i = 0; i < kNumVoices; i++)
     {
-        switch (i)
-        {
-            case 2:
-                if (synthVoiceType == 0)
-                    [voice[i] addToAudioBuffer:buffer:num_samples];
-                break;
-            case 3:
-                if (synthVoiceType == 1)
-                    [voice[i] addToAudioBuffer:buffer:num_samples];
-                break;
-            default:
-                [voice[i] addToAudioBuffer:buffer:num_samples];
-                break;
-        }
+        [voice[i] addToAudioBuffer:buffer:num_samples];
     }
     
     for (UInt8 i = 0; i < kNumEffects; i++)
     {
-        switch (i)
-        {
-            default:
-                [effect[i] processAudioBuffer:buffer:num_samples];
-                break;
-        }
+        [effect[i] processAudioBuffer:buffer:num_samples];
     }
 }
 
