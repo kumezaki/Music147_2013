@@ -65,7 +65,7 @@
     return result;
 }
 
--(void) biQuad_set:(int)type:(Float64)dbGain:(Float64)freq:(Float64)srate:(Float64)bandwidth
+-(void) biQuad_set:(int)type :(Float64)dbGain :(Float64)freq :(Float64)srate :(Float64)bandwidth
 {
     if (freq <= 0.) return;
     
