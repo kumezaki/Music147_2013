@@ -49,7 +49,10 @@
         s += state_ - C2_;
         state_ = s * 0.995;
 
-        buffer[i] += amp * s;
+        // update the envelope by one sample
+        [env update:1];
+        
+        buffer[i] += amp * env.output * s;
 
         phase_ += rate_;
         if ( phase_ >= M_PI ) phase_ -= M_PI;

@@ -6,9 +6,10 @@
 //  Copyright (c) 2013 Kojiro Umezaki. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
 #import <UIKit/UIKit.h>
 
-@interface MUS147ViewController : UIViewController {
+@interface MUS147ViewController : UIViewController <CLLocationManagerDelegate> {
 
     // member variables here
     IBOutlet UISlider* speed0Slider;
@@ -35,5 +36,7 @@
 -(IBAction)seqRec:(id)sender;
 
 -(IBAction)seqWave:(id)sender;
+
+-(IBAction)getCurrentLocation:(id)sender;
 
 @end

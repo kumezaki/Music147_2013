@@ -68,8 +68,11 @@ extern MUS147AQPlayer* aqp;
         Float64 x = pt.x/self.bounds.size.width;
         Float64 y = pt.y/self.bounds.size.height;
         
-        [aqp getSynthVoice].amp = [MUS147Event_Touch yToAmp:y];
-        [aqp getSynthVoice].freq = [MUS147Event_Touch xToFreq:x];
+        MUS147Voice* v = [aqp getSynthVoice];
+        v.amp = [MUS147Event_Touch yToAmp:y];
+        v.freq = [MUS147Event_Touch xToFreq:x];
+        if (!v.isOn)
+            [v on];
         
         if (aqp.sequencer.recording)
             [aqp.sequencer addTouchEvent:x :y :YES];
@@ -90,7 +93,10 @@ extern MUS147AQPlayer* aqp;
             continue;
         }
 
-        [aqp getSynthVoice].amp = 0.;
+        MUS147Voice* v = [aqp getSynthVoice];
+//        v.amp = 0.;
+        if (v.isOn)
+            [v off];
 
         if (aqp.sequencer.recording)
             [aqp.sequencer addTouchEvent:0. :0. :NO];

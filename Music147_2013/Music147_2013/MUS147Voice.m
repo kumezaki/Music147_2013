@@ -14,9 +14,37 @@
 @synthesize amp;
 @synthesize speed;
 
+@synthesize env;
+
 -(void)addToAudioBuffer:(Float64*)buffer :(UInt32)num_samples
 {
     // does nothing
+}
+
+-(id)init
+{
+    self = [super init];
+    
+    env = [[MUS147Envelope alloc] init];
+	env.attack = 0.05;
+	env.release = 0.05;
+    
+    return self;
+}
+
+-(BOOL)isOn
+{
+    return env.output > 0.;
+}
+
+-(void)on
+{
+    [env on];
+}
+
+-(void)off
+{
+    [env off];
 }
 
 @end
