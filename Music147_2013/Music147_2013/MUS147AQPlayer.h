@@ -19,11 +19,14 @@
 // number of buffers used by AQ system for playback
 #define kNumBuffers_Playback     3
 
-// number of possible voices
-#define kNumVoices      3
+// number of possible playback voices
+#define kNumVoices          6
+
+// number of possible synth voices
+#define kNumVoices_Synth    4
 
 // number of possible effects
-#define kNumEffects     3
+#define kNumEffects         3
 
 @interface MUS147AQPlayer : NSObject {
 
@@ -37,8 +40,8 @@
     // for now, there is only one element in each array
     MUS147Voice* voice_samp_mem[1];
     MUS147Voice* voice_samp_sf[1];
-    MUS147Voice* voice_synth_blit[1];
-    MUS147Voice* voice_synth_blitsaw[1];
+    MUS147Voice* voice_synth_blit[kNumVoices_Synth];
+    MUS147Voice* voice_synth_blitsaw[kNumVoices_Synth];
 
     MUS147Voice* voice[kNumVoices];
     

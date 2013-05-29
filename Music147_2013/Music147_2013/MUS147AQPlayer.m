@@ -68,8 +68,12 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     // first allocate pools of voices ...
     voice_samp_mem[0] = [[MUS147Voice_Sample_Mem alloc] init];
     voice_samp_sf[0] = [[MUS147Voice_Sample_SF alloc] init];
-    voice_synth_blit[0] = [[MUS147Voice_BLIT alloc] init];
-    voice_synth_blitsaw[0] = [[MUS147Voice_BLITSaw alloc] init];;
+
+    for (UInt8 i = 0; i < kNumVoices_Synth; i++)
+    {
+        voice_synth_blit[i] = [[MUS147Voice_BLIT alloc] init];
+        voice_synth_blitsaw[i] = [[MUS147Voice_BLITSaw alloc] init];
+    }
 
     // ... then assign them to array of active voices
     for (UInt8 i = 0; i < kNumVoices; i++)
@@ -83,7 +87,10 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
                 voice[i] = voice_samp_sf[0];
                 break;
             case 2:
-                voice[i] = voice_synth_blit[0];
+            case 3:
+            case 4:
+            case 5:
+                voice[i] = voice_synth_blit[i-2];
                 break;
             default:
                 break;
@@ -176,10 +183,12 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     switch (synthVoiceType)
     {
         case 0:
-            voice[2] = voice_synth_blit[0];
+            for (UInt8 i = 0; i < kNumVoices_Synth; i++)
+                voice[i+2] = voice_synth_blit[i];
             break;
         case 1:
-            voice[2] = voice_synth_blitsaw[0];
+            for (UInt8 i = 0; i < kNumVoices_Synth; i++)
+                voice[i+2] = voice_synth_blitsaw[i];
             break;
     }
 }
@@ -196,16 +205,14 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     switch (synthVoiceType)
     {
         case 0:
-            // for now we've only hard coded one element in the voice_synth_blit array
-            for (UInt8 i = 0; i < 1; i++)
-                if (![voice[i] isOn])
-                    v = voice_synth_blit[0];
+            for (UInt8 i = 0; i < kNumVoices_Synth; i++)
+                if (![voice_synth_blit[i] isOn])
+                    v = voice_synth_blit[i];
             break;
         case 1:
-            // for now we've only hard coded one element in the voice_synth_blitsaw array
-            for (UInt8 i = 0; i < 1; i++)
-                if (![voice[i] isOn])
-                    v = voice_synth_blitsaw[0];
+            for (UInt8 i = 0; i < kNumVoices_Synth; i++)
+                if (![voice_synth_blitsaw[i] isOn])
+                    v = voice_synth_blitsaw[i];
             break;
         default:
             break;

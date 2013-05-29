@@ -60,19 +60,30 @@ extern MUS147AQPlayer* aqp;
     {
         SInt8 t_pos = [self getTouchPos:t];
         if (t_pos < 0)
+        {
             t_pos = [self addTouch:t];
-        if (t_pos < 0)
-            continue;
+            if (t_pos < 0)
+            {
+                NSLog(@"could not add touch");
+                continue;
+            }
+            else
+                voice[t_pos] = [aqp getSynthVoice];
+        }
+
+        MUS147Voice* v = voice[t_pos];
 
         CGPoint pt = [t locationInView:self];
         Float64 x = pt.x/self.bounds.size.width;
         Float64 y = pt.y/self.bounds.size.height;
         
-        MUS147Voice* v = [aqp getSynthVoice];
-        v.amp = [MUS147Event_Touch yToAmp:y];
-        v.freq = [MUS147Event_Touch xToFreq:x];
-        if (!v.isOn)
-            [v on];
+        if (v != nil)
+        {
+            v.amp = [MUS147Event_Touch yToAmp:y];
+            v.freq = [MUS147Event_Touch xToFreq:x];
+            if (!v.isOn)
+                [v on];
+        }
         
         if (aqp.sequencer.recording)
             [aqp.sequencer addTouchEvent:x :y :YES];
@@ -93,11 +104,15 @@ extern MUS147AQPlayer* aqp;
             continue;
         }
 
-        MUS147Voice* v = [aqp getSynthVoice];
-//        v.amp = 0.;
-        if (v.isOn)
-            [v off];
+        MUS147Voice* v = voice[t_pos];
 
+        if (v != nil)
+        {
+//          v.amp = 0.;
+            if (v.isOn)
+                [v off];
+        }
+        
         if (aqp.sequencer.recording)
             [aqp.sequencer addTouchEvent:0. :0. :NO];
 

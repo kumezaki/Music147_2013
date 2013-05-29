@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "MUS147Voice.h"
+
 // the number of maximum, simultaneous touches
-#define kMaxNumTouches 10
+#define kMaxNumTouches 4
 
 @interface MUS147View : UIView <UIAccelerometerDelegate> {
     UITouch* touch[kMaxNumTouches];
+    MUS147Voice* voice[kMaxNumTouches];
 }
 
 -(void)doTouchesOn:(NSSet *)touches withEvent:(UIEvent *)event;
