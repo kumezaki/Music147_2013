@@ -18,6 +18,8 @@
 {
     self = [super init];
 
+    events = [[NSMutableArray alloc] init];
+
 #if 0
     numEvents = 0;
 #else
