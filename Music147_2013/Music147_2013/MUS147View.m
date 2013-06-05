@@ -26,6 +26,17 @@ extern MUS147AQPlayer* aqp;
 
 -(void)awakeFromNib
 {
+    nilObject = [[NSObject alloc] init];
+
+    voice = [[NSMutableArray alloc] init];
+    touch = [[NSMutableArray alloc] init];
+
+    for (UInt8 i = 0; i < kMaxNumTouches; i++)
+    {
+        [voice insertObject:nilObject atIndex:i];
+        [touch insertObject:nilObject atIndex:i];
+    }
+    
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
 
@@ -35,13 +46,13 @@ extern MUS147AQPlayer* aqp;
 {
     for (UInt8 i = 0; i < kMaxNumTouches; i++)
     {
-        if (touch[i] == nil) continue; /* guard */
+        if ([touch objectAtIndex:i] == nilObject) continue; /* guard */
         
         // Drawing code
         UIColor *uciBlueColor = [UIColor colorWithRed:0./255. green:34./255. blue:68./255. alpha:1.];
         UIColor *uciGoldColor = [UIColor colorWithRed:255./255. green:222./255. blue:108./255. alpha:1.];
 
-        CGPoint pt = [touch[i] locationInView:self];
+        CGPoint pt = [[touch objectAtIndex:i] locationInView:self];
 
         Float64 w = 30.;
         Float64 h = w;
@@ -68,10 +79,10 @@ extern MUS147AQPlayer* aqp;
                 continue;
             }
             else
-                voice[t_pos] = [aqp getSynthVoice];
+                [voice replaceObjectAtIndex:t_pos withObject:[aqp getSynthVoice]];
         }
 
-        MUS147Voice* v = voice[t_pos];
+        MUS147Voice* v = [voice objectAtIndex:t_pos];
 
         CGPoint pt = [t locationInView:self];
         Float64 x = pt.x/self.bounds.size.width;
@@ -87,9 +98,8 @@ extern MUS147AQPlayer* aqp;
         
         if (aqp.sequencer.recording)
             [aqp.sequencer addTouchEvent:x :y :YES];
-
-        touch[0] = t;
     }
+
     [self setNeedsDisplay];
 }
 
@@ -104,7 +114,7 @@ extern MUS147AQPlayer* aqp;
             continue;
         }
 
-        MUS147Voice* v = voice[t_pos];
+        MUS147Voice* v = [voice objectAtIndex:t_pos];
 
         if (v != nil)
         {
@@ -115,25 +125,24 @@ extern MUS147AQPlayer* aqp;
         
         if (aqp.sequencer.recording)
             [aqp.sequencer addTouchEvent:0. :0. :NO];
-
-        touch[t_pos] = nil;
     }
+    
     [self setNeedsDisplay];
 }
 
 -(SInt8)getTouchPos:(UITouch*)t
 {
     for (UInt8 i = 0; i < kMaxNumTouches; i++)
-        if (t == touch[i]) return i;
+        if (t == [touch objectAtIndex:i]) return i;
     return -1;
 }
 
 -(SInt8)addTouch:(UITouch*)t
 {
     for (UInt8 i = 0; i < kMaxNumTouches; i++)
-        if (touch[i] == nil)
+        if ([touch objectAtIndex:i] == nilObject)
         {
-            touch[i] = t;
+            [touch replaceObjectAtIndex:i withObject:t];
             return i;
         }
     return -1;
@@ -144,7 +153,7 @@ extern MUS147AQPlayer* aqp;
     for (UInt8 i = 0; i < kMaxNumTouches; i++)
         if (t == touch[i])
         {
-            touch[i] = nil;
+            [touch replaceObjectAtIndex:i withObject:nilObject];
             return i;
         }
     return -1;

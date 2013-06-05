@@ -25,11 +25,9 @@
 #else
     numEvents = 4;
 
-    MUS147Event_Note* e;
-    
     for (UInt8 i = 0; i < numEvents; i++)
     {
-        e = [[MUS147Event_Note alloc] init];
+        MUS147Event_Note* e = [[MUS147Event_Note alloc] init];
 
         switch (i)
         {

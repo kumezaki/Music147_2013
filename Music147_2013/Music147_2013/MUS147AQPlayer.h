@@ -38,17 +38,21 @@
     
     // the following were added in preparation for supporting pools of voices
     // for now, there is only one element in each array
-    MUS147Voice* voice_samp_mem[1];
-    MUS147Voice* voice_samp_sf[1];
+//    MUS147Voice* voice_samp_mem[1];
+//    MUS147Voice* voice_samp_sf[1];
 //    MUS147Voice* voice_synth_blit[kNumVoices_Synth];
-    NSMutableArray* voice_synth_blit;
 //    MUS147Voice* voice_synth_blitsaw[kNumVoices_Synth];
-    NSMutableArray* voice_synth_blitsaw;
 
 //    MUS147Voice* voice[kNumVoices];
-    NSMutableArray* voice;
     
-    MUS147Effect* effect[kNumEffects];
+//    MUS147Effect* effect[kNumEffects];
+
+    NSMutableArray* voice_samp_mem;
+    NSMutableArray* voice_samp_sf;
+    NSMutableArray* voice_synth_blit;
+    NSMutableArray* voice_synth_blitsaw;
+    NSMutableArray* voice;
+    NSMutableArray* effect;
     
     MUS147Sequencer* sequencer;
 }

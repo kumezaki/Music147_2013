@@ -25,12 +25,13 @@ extern MUS147AQPlayer* aqp;
     
     if (type == kMUS147Event_Touch_OFF)
     {
-        voice.amp = 0.0;
+        [voice off];
     }
     else
     {
         voice.amp = [MUS147Event_Touch yToAmp:y];
         voice.freq = [MUS147Event_Touch xToFreq:x];
+        [voice on];
     }
 }
 
