@@ -14,11 +14,11 @@
 #define kMaxNumTouches 4
 
 @interface MUS147View : UIView <UIAccelerometerDelegate> {
-//    UITouch* touch[kMaxNumTouches];
-//    MUS147Voice* voice[kMaxNumTouches];
+    UITouch* touch[kMaxNumTouches];
+    MUS147Voice* voice[kMaxNumTouches];
 
-    NSMutableArray* touch;
-    NSMutableArray* voice;
+//    NSMutableArray* touch;
+//    NSMutableArray* voice;
     
     NSObject* nilObject;
 }
