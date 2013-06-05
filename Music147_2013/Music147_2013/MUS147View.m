@@ -169,7 +169,8 @@ extern MUS147AQPlayer* aqp;
 
 -(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 {
-    NSLog(@"%f %f %f",acceleration.x,acceleration.y,acceleration.z);
+    // comment the NSLog when running on iOS (for Simulator leave it uncommented)
+//    NSLog(@"%f %f %f",acceleration.x,acceleration.y,acceleration.z);
 }
 
 @end
