@@ -151,7 +151,7 @@ extern MUS147AQPlayer* aqp;
 -(SInt8)removeTouch:(UITouch*)t
 {
     for (UInt8 i = 0; i < kMaxNumTouches; i++)
-        if (t == touch[i])
+        if (t == [touch objectAtIndex:i])
         {
             [touch replaceObjectAtIndex:i withObject:nilObject];
             return i;

@@ -46,7 +46,9 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 	// queue the updated AudioQueueBuffer
 	AudioQueueEnqueueBuffer(inAQ, inAQBuffer, 0, nil);
     
+    @autoreleasepool {
     [aqp reportElapsedFrames:numFrames];
+    }
 }
 
 @implementation MUS147AQPlayer
