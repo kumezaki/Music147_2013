@@ -247,6 +247,25 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     return v;
 }
 
+-(MUS147Voice*)getSynthVoiceWithPos:(UInt8)pos
+{
+    MUS147Voice* v = nil;
+    
+    switch (synthVoiceType)
+    {
+        case 0:
+            v = voice_synth_blit[pos];
+            break;
+        case 1:
+            v = voice_synth_blitsaw[pos];
+            break;
+        default:
+            break;
+    }
+    
+    return v;
+}
+
 -(MUS147Voice*)getRecordVoice
 {
 //    return [voice objectAtIndex:0];

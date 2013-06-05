@@ -103,7 +103,7 @@ extern MUS147AQPlayer* aqp;
         }
         
         if (aqp.sequencer.recording)
-            [aqp.sequencer addTouchEvent:x :y :YES];
+            [aqp.sequencer addTouchEvent:x :y :YES :t_pos];
     }
 
     [self setNeedsDisplay];
@@ -131,7 +131,7 @@ extern MUS147AQPlayer* aqp;
         }
         
         if (aqp.sequencer.recording)
-            [aqp.sequencer addTouchEvent:0. :0. :NO];
+            [aqp.sequencer addTouchEvent:0. :0. :NO :t_pos];
     }
     
     [self setNeedsDisplay];

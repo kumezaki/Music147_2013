@@ -103,7 +103,7 @@
     }
 }
 
--(void)addTouchEvent:(Float64)x :(Float64)y :(BOOL)on
+-(void)addTouchEvent:(Float64)x :(Float64)y :(BOOL)on :(UInt8)pos
 {
     if (!recording) return;
     
@@ -121,6 +121,7 @@
     e.x = x;
     e.y = y;
     e.type = on ? kMUS147Event_Touch_ON : kMUS147Event_Touch_OFF;
+    e.pos = pos;
     
     [seq addEvent:e];
 }

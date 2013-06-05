@@ -19,17 +19,15 @@ extern MUS147AQPlayer* aqp;
 
 -(void)doOn
 {
+    on = YES;
     if (voice == nil)
         voice = [aqp getSynthVoice];
-
-    on = YES;
 }
 
 -(void)doOff
 {
-    voice = nil;
-
     on = NO;
+    voice = nil;
 }
 
 @end

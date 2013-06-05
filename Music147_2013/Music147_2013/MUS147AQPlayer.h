@@ -66,7 +66,10 @@
 -(OSStatus)stop;
 
 -(MUS147Voice*)getVoice:(UInt8)pos;
+
 -(MUS147Voice*)getSynthVoice;
+-(MUS147Voice*)getSynthVoiceWithPos:(UInt8)pos;
+
 -(MUS147Voice*)getRecordVoice;
 
 -(MUS147Effect_BiQuad*)getBiQuad;

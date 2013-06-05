@@ -32,6 +32,6 @@
 
 -(void)allOnNotesOff;
 
--(void)addTouchEvent:(Float64)x :(Float64)y :(BOOL)on;
+-(void)addTouchEvent:(Float64)x :(Float64)y :(BOOL)on :(UInt8)pos;
 
 @end
