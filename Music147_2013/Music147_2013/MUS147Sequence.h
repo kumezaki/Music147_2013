@@ -13,11 +13,7 @@
 #define kMaxNumSeqEvents 1000
 
 @interface MUS147Sequence : NSObject {
-#if 1
     MUS147Event* events[kMaxNumSeqEvents];
-#else
-    NSMutableArray* events;
-#endif
     UInt32 numEvents;
 }
 

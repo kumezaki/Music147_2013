@@ -47,13 +47,6 @@
     
     MUS147Effect* effect[kNumEffects];
 
-//    NSMutableArray* voice_samp_mem;
-//    NSMutableArray* voice_samp_sf;
-//    NSMutableArray* voice_synth_blit;
-//    NSMutableArray* voice_synth_blitsaw;
-//    NSMutableArray* voice;
-//    NSMutableArray* effect;
-    
     MUS147Sequencer* sequencer;
 }
 
