@@ -47,7 +47,7 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 	AudioQueueEnqueueBuffer(inAQ, inAQBuffer, 0, nil);
     
     @autoreleasepool {
-    [aqp reportElapsedFrames:numFrames];
+        [aqp reportElapsedFrames:numFrames];
     }
 }
 
@@ -67,25 +67,25 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     
 	aqp = self;
     
-    voice_samp_mem = [[NSMutableArray alloc] init];
-    voice_samp_sf = [[NSMutableArray alloc] init];
-    voice_synth_blit = [[NSMutableArray alloc] init];
-    voice_synth_blitsaw = [[NSMutableArray alloc] init];
-    voice = [[NSMutableArray alloc] init];
-    effect = [[NSMutableArray alloc] init];
+//    voice_samp_mem = [[NSMutableArray alloc] init];
+//    voice_samp_sf = [[NSMutableArray alloc] init];
+//    voice_synth_blit = [[NSMutableArray alloc] init];
+//    voice_synth_blitsaw = [[NSMutableArray alloc] init];
+//    voice = [[NSMutableArray alloc] init];
+//    effect = [[NSMutableArray alloc] init];
 
     // first allocate pools of voices ...
-//    voice_samp_mem[0] = [[MUS147Voice_Sample_Mem alloc] init];
-    [voice_samp_mem insertObject:[[MUS147Voice_Sample_Mem alloc] init] atIndex:0];
-//    voice_samp_sf[0] = [[MUS147Voice_Sample_SF alloc] init];
-    [voice_samp_sf insertObject:[[MUS147Voice_Sample_SF alloc] init] atIndex:0];
+    voice_samp_mem[0] = [[MUS147Voice_Sample_Mem alloc] init];
+//    [voice_samp_mem insertObject:[[MUS147Voice_Sample_Mem alloc] init] atIndex:0];
+    voice_samp_sf[0] = [[MUS147Voice_Sample_SF alloc] init];
+//    [voice_samp_sf insertObject:[[MUS147Voice_Sample_SF alloc] init] atIndex:0];
 
     for (UInt8 i = 0; i < kNumVoices_Synth; i++)
     {
-//        voice_synth_blit[i] = [[MUS147Voice_BLIT alloc] init];
-        [voice_synth_blit insertObject:[[MUS147Voice_BLIT alloc] init] atIndex:i];
-//        voice_synth_blitsaw[i] = [[MUS147Voice_BLITSaw alloc] init];
-        [voice_synth_blitsaw insertObject:[[MUS147Voice_BLITSaw alloc] init] atIndex:i];
+        voice_synth_blit[i] = [[MUS147Voice_BLIT alloc] init];
+//        [voice_synth_blit insertObject:[[MUS147Voice_BLIT alloc] init] atIndex:i];
+        voice_synth_blitsaw[i] = [[MUS147Voice_BLITSaw alloc] init];
+//        [voice_synth_blitsaw insertObject:[[MUS147Voice_BLITSaw alloc] init] atIndex:i];
     }
 
     // ... then assign them to array of active voices
@@ -94,19 +94,19 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
         switch (i)
         {
             case 0:
-//                voice[i] = voice_samp_mem[0];
-                [voice insertObject:[voice_samp_mem objectAtIndex:0] atIndex:i];
+                voice[i] = voice_samp_mem[0];
+//                [voice insertObject:[voice_samp_mem objectAtIndex:0] atIndex:i];
                 break;
             case 1:
-//                voice[i] = voice_samp_sf[0];
-                [voice insertObject:[voice_samp_sf objectAtIndex:0] atIndex:i];
+                voice[i] = voice_samp_sf[0];
+//                [voice insertObject:[voice_samp_sf objectAtIndex:0] atIndex:i];
                 break;
             case 2:
             case 3:
             case 4:
             case 5:
-//                voice[i] = voice_synth_blit[i-2];
-                [voice insertObject:[voice_synth_blit objectAtIndex:i-2] atIndex:i];
+                voice[i] = voice_synth_blit[i-2];
+//                [voice insertObject:[voice_synth_blit objectAtIndex:i-2] atIndex:i];
                 break;
             default:
                 break;
@@ -121,17 +121,17 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
             {
                 MUS147Effect_BiQuad* bq = [[MUS147Effect_BiQuad alloc] init];
                 [bq biQuad_set:LPF:0.:5000.:kSR:1.0];
-//                effect[i] = bq;
-                [effect insertObject:bq atIndex:i];
+                effect[i] = bq;
+//                [effect insertObject:bq atIndex:i];
                 break;
             }
             case 1:
-//                effect[i] = [[MUS147Effect_Delay alloc] init];
-                [effect insertObject:[[MUS147Effect_Delay alloc] init] atIndex:i];
+                effect[i] = [[MUS147Effect_Delay alloc] init];
+//                [effect insertObject:[[MUS147Effect_Delay alloc] init] atIndex:i];
                 break;
             case 2:
-//                effect[i] = [[MUS147Effect_Limiter alloc] init];
-                [effect insertObject:[[MUS147Effect_Limiter alloc] init] atIndex:i];
+                effect[i] = [[MUS147Effect_Limiter alloc] init];
+//                [effect insertObject:[[MUS147Effect_Limiter alloc] init] atIndex:i];
                 break;
             default:
                 break;
@@ -203,21 +203,21 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     {
         case 0:
             for (UInt8 i = 0; i < kNumVoices_Synth; i++)
-                [voice replaceObjectAtIndex:i+2 withObject:[voice_synth_blit objectAtIndex:i]];
-//                voice[i+2] = voice_synth_blit[i];
+                voice[i+2] = voice_synth_blit[i];
+//                [voice replaceObjectAtIndex:i+2 withObject:[voice_synth_blit objectAtIndex:i]];
             break;
         case 1:
             for (UInt8 i = 0; i < kNumVoices_Synth; i++)
-                [voice replaceObjectAtIndex:i+2 withObject:[voice_synth_blitsaw objectAtIndex:i]];
-//                voice[i+2] = [voice_synth_blitsaw objectAtIndex:i];
+                voice[i+2] = voice_synth_blitsaw[i];
+//                [voice replaceObjectAtIndex:i+2 withObject:[voice_synth_blitsaw objectAtIndex:i]];
             break;
     }
 }
 
 -(MUS147Voice*)getVoice:(UInt8)pos
 {
-    return [voice objectAtIndex:pos];
-//    return voice[pos];
+//    return [voice objectAtIndex:pos];
+    return voice[pos];
 }
 
 -(MUS147Voice*)getSynthVoice
@@ -228,13 +228,17 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     {
         case 0:
             for (UInt8 i = 0; i < kNumVoices_Synth; i++)
-                if (![[voice_synth_blit objectAtIndex:i] isOn])
-                    v = [voice_synth_blit objectAtIndex:i];
+                if (![voice_synth_blit[i] isOn])
+                    v = voice_synth_blit[i];
+//                if (![[voice_synth_blit objectAtIndex:i] isOn])
+//                    v = [voice_synth_blit objectAtIndex:i];
             break;
         case 1:
             for (UInt8 i = 0; i < kNumVoices_Synth; i++)
-                if (![[voice_synth_blitsaw objectAtIndex:i] isOn])
-                    v = [voice_synth_blitsaw objectAtIndex:i];
+                if (![voice_synth_blitsaw[i] isOn])
+                    v = voice_synth_blitsaw[i];
+//                if (![[voice_synth_blitsaw objectAtIndex:i] isOn])
+//                    v = [voice_synth_blitsaw objectAtIndex:i];
             break;
         default:
             break;
@@ -245,14 +249,14 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 
 -(MUS147Voice*)getRecordVoice
 {
-    return [voice objectAtIndex:0];
-    //    return voice[0];
+//    return [voice objectAtIndex:0];
+    return voice[0];
 }
 
 -(MUS147Effect_BiQuad*)getBiQuad
 {
-    return (MUS147Effect_BiQuad*)[effect objectAtIndex:0];
-//    return (MUS147Effect_BiQuad*)effect[0];
+//    return (MUS147Effect_BiQuad*)[effect objectAtIndex:0];
+    return (MUS147Effect_BiQuad*)effect[0];
 }
 
 -(void)reportElapsedFrames:(UInt32)num_frames
@@ -266,14 +270,14 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 {
     for (UInt8 i = 0; i < kNumVoices; i++)
     {
-        [[voice objectAtIndex:i] addToAudioBuffer:buffer:num_samples];
-//        [voice[i] addToAudioBuffer:buffer:num_samples];
+//        [[voice objectAtIndex:i] addToAudioBuffer:buffer:num_samples];
+        [voice[i] addToAudioBuffer:buffer:num_samples];
     }
     
     for (UInt8 i = 0; i < kNumEffects; i++)
     {
-        [[effect objectAtIndex:i] processAudioBuffer:buffer:num_samples];
-//        [effect[i] processAudioBuffer:buffer:num_samples];
+//        [[effect objectAtIndex:i] processAudioBuffer:buffer:num_samples];
+        [effect[i] processAudioBuffer:buffer:num_samples];
     }
 }
 

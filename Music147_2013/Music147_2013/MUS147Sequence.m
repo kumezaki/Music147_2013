@@ -18,7 +18,7 @@
 {
     self = [super init];
 
-    events = [[NSMutableArray alloc] init];
+//    events = [[NSMutableArray alloc] init];
 
 #if 0
     numEvents = 0;
@@ -59,8 +59,8 @@
                 break;
         }
 
-        [events insertObject:e atIndex:i];
-//        events[i] = e;
+//        [events insertObject:e atIndex:i];
+        events[i] = e;
     }
 #endif
     
@@ -69,14 +69,14 @@
 
 -(MUS147Event*)getEvent:(UInt32)pos
 {
-    return [events objectAtIndex:pos];
-//    return events[pos];
+//    return [events objectAtIndex:pos];
+    return events[pos];
 }
 
 -(void)addEvent:(MUS147Event*)event
 {
-    [events insertObject:event atIndex:numEvents++];
-//    events[numEvents++] = event;
+//    [events insertObject:event atIndex:numEvents++];
+    events[numEvents++] = event;
 }
 
 @end

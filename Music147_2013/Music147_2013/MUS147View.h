@@ -20,7 +20,7 @@
 //    NSMutableArray* touch;
 //    NSMutableArray* voice;
     
-    NSObject* nilObject;
+//    NSObject* nilObject;
 }
 
 -(void)doTouchesOn:(NSSet *)touches withEvent:(UIEvent *)event;
