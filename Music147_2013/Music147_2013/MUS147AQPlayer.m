@@ -263,12 +263,14 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 {
     for (UInt8 i = 0; i < kNumVoices; i++)
     {
-        [voice[i] addToAudioBuffer:buffer:num_samples];
+        if (voice[i] != nil)
+            [voice[i] addToAudioBuffer:buffer:num_samples];
     }
     
     for (UInt8 i = 0; i < kNumEffects; i++)
     {
-        [effect[i] processAudioBuffer:buffer:num_samples];
+        if (effect[i] != nil)
+            [effect[i] processAudioBuffer:buffer:num_samples];
     }
 }
 

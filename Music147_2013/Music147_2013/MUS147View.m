@@ -68,7 +68,7 @@ extern MUS147AQPlayer* aqp;
                 continue;
             }
             else
-                voice[t_pos] = [aqp getSynthVoice];
+                voice[t_pos] = [aqp getSynthVoiceWithPos:t_pos];
         }
 
         MUS147Voice* v = voice[t_pos];
