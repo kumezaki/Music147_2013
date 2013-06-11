@@ -68,7 +68,7 @@ extern MUS147AQPlayer* aqp;
                 continue;
             }
             else
-                voice[t_pos] = [aqp getSynthVoice];
+                voice[t_pos] = [aqp getSynthVoiceWithPos:t_pos];
         }
 
         MUS147Voice* v = voice[t_pos];
@@ -169,7 +169,8 @@ extern MUS147AQPlayer* aqp;
 
 -(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 {
-    NSLog(@"%f %f %f",acceleration.x,acceleration.y,acceleration.z);
+    // comment the NSLog when running on iOS (for Simulator leave it uncommented)
+//    NSLog(@"%f %f %f",acceleration.x,acceleration.y,acceleration.z);
 }
 
 @end
